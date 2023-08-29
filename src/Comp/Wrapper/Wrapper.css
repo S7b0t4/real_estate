@@ -1,0 +1,6 @@
+.main_title_png{
+	display: flex;
+	position: absolute;
+	z-index: -10;
+	width: 100%;
+}

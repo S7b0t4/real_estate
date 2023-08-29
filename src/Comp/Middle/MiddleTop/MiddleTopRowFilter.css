@@ -1,0 +1,105 @@
+.middle_top_row_filter{
+	display: flex;
+	justify-content: space-between;
+	padding: 32px 0;
+	gap: 24px;
+	text-align: center;
+}
+.middle_top_row_filter_icon_text{
+	color: #AFB6C4;
+	font-family: Inter;
+	font-size: 12px;
+}
+.middle_top_row_filter_main_icon{
+	cursor: pointer;
+}
+.middle_top_row_filter_border{
+	content: "";
+	width: 1px;
+	height: 50px;
+	background: black;
+}
+.middle_top_row_filter_row_icon{
+	text-align: center;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+.middle_top_row_filter_row_option_icon{
+	display: flex;
+	justify-content: space-between;
+	height: 34px;
+	padding: 4px;
+	align-items: center;
+	border-radius: 4px;
+	background: #F7F7F7;
+	box-shadow: 0px 1px 2px 0px rgba(97, 97, 97, 0.20) inset, 0px 2px 4px 0px rgba(97, 97, 97, 0.10) inset;
+}
+.middle_top_row_filter_row_option_icon_btn{
+	color: #3A3A3A;
+	font-family: Inter;
+	font-size: 14px;
+	padding: 5px 11px;
+}
+.middle_top_row_filter_row_option_icon_btn:hover{
+	cursor: pointer;
+	border-radius: 4px;
+	background: #FFF;
+	box-shadow: 0px 1px 2px 0px rgba(97, 97, 97, 0.20), 0px 2px 4px 0px rgba(97, 97, 97, 0.20);
+}
+.middle_top_row_filter_icon{
+	cursor: pointer;
+}
+.middle_top_wrapper{
+	width: 1240px;
+	margin: 0 auto;
+}
+.middle_top_row_filter_adoptive{
+	display: none;
+}
+.middle_top_row_filter_icon{
+	text-align: center;
+}
+.middle_top_row_filter_mini_icon{
+	padding: 9px 17px;
+	display: none;
+}
+.middle_top_row_mini_filter_icon_text{
+	cursor: pointer;
+	color: #3A3A3A;
+	font-family: Inter;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+@media screen and (max-width: 1024px){
+	.middle_top_row_filter{
+		padding: 10px 10px 32px;
+	}
+	.middle_top_row_filter_mini_icon{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+		border-radius: 4px;
+		border: 1px solid #AFB6C4;
+	}
+	.middle_top_row_filter_main_icon{
+		display: none;
+	}
+	.middle_top_row_filter_border{
+		display: none;
+	}
+	.middle_top_row_filter_row_icon{
+		display: none;
+	}
+	.middle_top_row_filter_adoptive{
+		display: block;
+	}
+}
+@media screen and (max-width: 1300px){
+	.middle_top_wrapper{
+		width: 100%;
+	}
+}
