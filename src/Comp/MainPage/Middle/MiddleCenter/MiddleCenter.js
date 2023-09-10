@@ -1,10 +1,10 @@
 import MiddleCenterMap from "./MiddleCenterMap"
 import "./MiddleCenter.css"
 
-const MiddleCenter = ({filter}) => {
+const MiddleCenter = ({filter, testArrForMapProductBlocks}) => {
 	return ( 
 		<div className='container'>
-				<MiddleCenterMap filter={ filter } />
+				<MiddleCenterMap filter={ filter } testArrForMapProductBlocks={testArrForMapProductBlocks} />
 		</div>
 	 );
 }

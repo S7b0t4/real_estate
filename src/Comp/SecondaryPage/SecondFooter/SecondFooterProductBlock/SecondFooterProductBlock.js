@@ -1,11 +1,11 @@
-import "./MiddleCenterProductBlock.css"
+import "./SecondFooterProductBlock.css"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 
-const MiddleCenterProductBlock = ({prop, index}) => {
+const SecondFooterProductBlock = ({prop, index}) => {
 
 	const valueCostIcon = (bool) =>{
 		if(bool){
@@ -39,37 +39,37 @@ const MiddleCenterProductBlock = ({prop, index}) => {
 	const mapImgArr = prop.img.map((item , index) => (
 		<SwiperSlide key={index}> 
 			{visibilityTag(index)}
-			<img src={item} alt="" className='middle_center_product_block_img'/>
+			<img src={item} alt="" className='second_footer_product_block_img'/>
 		</SwiperSlide>
 	))
 	
 	
 	return ( 
-		<div className='middle_center_product_block' key={index}>
+		<div className='second_footer_product_block' key={index}>
 			<Swiper
 			modules={[Pagination]}
 			pagination={{ clickable: false }}
       spaceBetween={10}
       slidesPerView={1}
-			className='middle_center_product_block_img_swiper'
+			className='second_footer_product_block_img_swiper'
     	>
       	{mapImgArr}
     	</Swiper>
-			<div className="middle_center_product_block_info">
-				<div className="middle_center_product_block_info_title_block">
-					<a className="middle_center_product_block_info_title" href={prop.link}>
+			<div className="second_footer_product_block_info">
+				<div className="second_footer_product_block_info_title_block">
+					<a className="second_footer_product_block_info_title" href={"/"+prop.link}>
 						{prop.title}
 					</a>
-					<div className="middle_center_product_block_info_subtitle">
+					<div className="second_footer_product_block_info_subtitle">
 						{prop.subTitle}
 					</div>
 				</div>
-				<div className="middle_center_product_block_info_sell_row">
-					<div className="middle_center_product_block_info_sell_block">
-						<div className="middle_center_product_block_info_sell">Sale: {prop.sell}</div>
-						<div className="middle_center_product_block_info_sell">Rent: {prop.rent}</div>
+				<div className="second_footer_product_block_info_sell_row">
+					<div className="second_footer_product_block_info_sell_block">
+						<div className="second_footer_product_block_info_sell">Sale: {prop.sell}</div>
+						<div className="second_footer_product_block_info_sell">Rent: {prop.rent}</div>
 					</div>
-					<div className="middle_center_product_block_info_cost_row">
+					<div className="second_footer_product_block_info_cost_row">
 						{mapCostArr}
 					</div>
 				</div>
@@ -78,4 +78,4 @@ const MiddleCenterProductBlock = ({prop, index}) => {
 	);
 }
  
-export default MiddleCenterProductBlock;
+export default SecondFooterProductBlock;

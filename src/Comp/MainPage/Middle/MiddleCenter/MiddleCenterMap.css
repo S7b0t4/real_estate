@@ -1,0 +1,18 @@
+.middle_center_map{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+}
+@media screen and (max-width: 1024px){
+	.middle_center_map{
+		max-width: 99%;
+		margin: 0 auto;
+	}
+}
+@media screen and (max-width: 800px){
+	.middle_center_map{
+		max-width: 100%;
+		margin: 0 auto;
+	}
+}
