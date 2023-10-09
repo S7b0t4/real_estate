@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/free-mode'
 import 'swiper/css';
 
-const SecondMainCenter = ({imgArray, squareImg, mainIMG}) => {
+const SecondMainCenter = ({ squareImg, mainIMG }) => { 
 
 	const mapMainIMG = mainIMG.map((img, index)=>(
 		<SwiperSlide key={index}>

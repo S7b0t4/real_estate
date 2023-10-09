@@ -36,7 +36,7 @@ const SecondFooterProductBlock = ({prop, index}) => {
 		}
 	}
 
-	const mapImgArr = prop.img.map((item , index) => (
+	const mapImgArr = prop.squareImg.map((item , index) => (
 		<SwiperSlide key={index}> 
 			{visibilityTag(index)}
 			<img src={item} alt="" className='second_footer_product_block_img'/>
@@ -57,7 +57,7 @@ const SecondFooterProductBlock = ({prop, index}) => {
     	</Swiper>
 			<div className="second_footer_product_block_info">
 				<div className="second_footer_product_block_info_title_block">
-					<a className="second_footer_product_block_info_title" href={"/"+prop.link}>
+					<a className="second_footer_product_block_info_title" href={"/"+prop._id}>
 						{prop.title}
 					</a>
 					<div className="second_footer_product_block_info_subtitle">

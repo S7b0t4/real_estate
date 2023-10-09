@@ -15,9 +15,21 @@ const MiddleCenterMap = ({testArrForMapProductBlocks}) => {
 	const assembling = testArrForMapProductBlocks.filter((productBlock)=>{
 		return productBlockFiltering(productBlock)
 	})
+
+	function getRandomElementsFromArray(arr, numElements) {
+		numElements = Math.min(numElements, arr.length);
+		const copyArray = [...arr];
+		const randomElements = [];
+		for (let i = 0; i < numElements; i++) {
+			const randomIndex = Math.floor(Math.random() * copyArray.length);
+			randomElements.push(copyArray.splice(randomIndex, 1)[0]);
+		}
+		return randomElements;
+	}
 	
+	const randomElements = getRandomElementsFromArray(testArrForMapProductBlocks, 4);
 	
-	const mapArrWithProductBlocks = assembling.map((obj, index)=>(
+	const mapArrWithProductBlocks = randomElements.map((obj, index)=>(
 		<SecondFooterProductBlock prop={obj} index={index} key={index}/>
 	))
 
