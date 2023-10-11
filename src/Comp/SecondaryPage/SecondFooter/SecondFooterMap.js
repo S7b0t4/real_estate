@@ -3,15 +3,6 @@ import "./SecondFooterMap.css"
 
 const MiddleCenterMap = ({testArrForMapProductBlocks}) => {
 
-	const productBlockFiltering = (filterItem, Filter = "All") => {
-		for (let i = 0; i < filterItem.filterTag.length; i++) {
-			if (filterItem.filterTag[i] === Filter) {
-					return true;
-			}
-		}
-		return false;
-	}
-
 	function getRandomElementsFromArray(arr, numElements) {
 		numElements = Math.min(numElements, arr.length);
 		const copyArray = [...arr];
