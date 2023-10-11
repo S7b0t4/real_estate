@@ -11,10 +11,6 @@ const MiddleCenterMap = ({testArrForMapProductBlocks}) => {
 		}
 		return false;
 	}
-	
-	const assembling = testArrForMapProductBlocks.filter((productBlock)=>{
-		return productBlockFiltering(productBlock)
-	})
 
 	function getRandomElementsFromArray(arr, numElements) {
 		numElements = Math.min(numElements, arr.length);

@@ -22,11 +22,12 @@ const App = () => {
   React.useEffect(()=>{
     getData()
     console.log(testArrForMapProductBlocks)
-  }, [testArrForMapProductBlocks])
+  }, [])
 
   const mapTestArrForMapProductBlocks = testArrForMapProductBlocks.map(item=>(
     <Route path={"/"+item.link} element={<SecondPage itemInfo={item} testArrForMapProductBlocks={testArrForMapProductBlocks}/>} />
   ))
+  
 
 	return (
     <BrowserRouter>
