@@ -1,39 +1,37 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import { Wrapper } from './MainPage/Wrapper/Wrapper';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SecondPage from './SecondaryPage/SecondPage';
+import Form from "./adminPage/components/Form"
 
 
 import axios from 'axios';
 
-const Backlink = "http://localhost:5000/"
+const BackLink = "http://localhost:5000/"
 
 const App = () => {
 
-  const [testArrForMapProductBlocks, setTestArrForMapProductBlocks] = React.useState([])
+  const [testArrForMapProductBlocks, setTestArrForMapProductBlocks] = useState([])
 
   const getData = async() => {
-    await axios.get(Backlink)
+    await axios.get(BackLink)
     .then((res=>{
       setTestArrForMapProductBlocks(res.data)
     }))
   }
 
-  React.useEffect(()=>{
+  useEffect(()=>{
     getData()
     console.log(testArrForMapProductBlocks)
   }, [])
-
-  const mapTestArrForMapProductBlocks = testArrForMapProductBlocks.map(item=>(
-    <Route path={"/"+item.link} element={<SecondPage itemInfo={item} testArrForMapProductBlocks={testArrForMapProductBlocks}/>} />
-  ))
   
 
 	return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Wrapper testArrForMapProductBlocks={testArrForMapProductBlocks}/>}/>
-        {mapTestArrForMapProductBlocks}
+        <Route path="/admin" element={<Form BackLink={BackLink}/>}/>
+        <Route path={"/:id"} element={<SecondPage BackLink={BackLink} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -53,7 +53,7 @@ const SecondMainTop = ({itemInfo}) => {
 					</div>
 				</div>
 			</div>
-			<div>
+			<div className='adoptive'>
 				<a className='row' href="/">
 					<img src={iconArrayRight} alt="" />
 					<div>Back to main page</div>

@@ -1,22 +1,27 @@
 import SecondFooterProductBlock from './SecondFooterProductBlock/SecondFooterProductBlock'
 import "./SecondFooterMap.css"
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 
-const MiddleCenterMap = ({testArrForMapProductBlocks}) => {
+const MiddleCenterMap = ({BackLink}) => {
 
-	function getRandomElementsFromArray(arr, numElements) {
-		numElements = Math.min(numElements, arr.length);
-		const copyArray = [...arr];
-		const randomElements = [];
-		for (let i = 0; i < numElements; i++) {
-			const randomIndex = Math.floor(Math.random() * copyArray.length);
-			randomElements.push(copyArray.splice(randomIndex, 1)[0]);
-		}
-		return randomElements;
-	}
+	const [arrInfo, setArrInfo] = useState([])
+
+	const getData = async() => {
+		console.log(BackLink+"random")
+    await axios.get(BackLink+"random")
+    .then((res=>{
+			console.log(res.data)
+      setArrInfo(res.data)
+    }))
+  }
+
+  useEffect(()=>{
+    getData()
+    console.log(arrInfo)
+  }, [])
 	
-	const randomElements = getRandomElementsFromArray(testArrForMapProductBlocks, 4);
-	
-	const mapArrWithProductBlocks = randomElements.map((obj, index)=>(
+	const mapArrWithProductBlocks = arrInfo.map((obj, index)=>(
 		<SecondFooterProductBlock prop={obj} index={index} key={index}/>
 	))
 
