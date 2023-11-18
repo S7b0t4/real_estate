@@ -4,7 +4,7 @@ import "./HeaderTopRow.css"
 
 import BoardBlockColum from './Boards/BoardBlockColum'
 
-export const HeaderTopRow = () => {
+export const HeaderTopRow = ({ BackLink }) => {
 
 	const [arrCostValue, setArrCostValue] = useState([])
 
@@ -13,16 +13,16 @@ export const HeaderTopRow = () => {
 	const arrLanValue = [
 		{
 			valueText: "Eng",
-			valueIMG: "http://localhost:5000/uploads/iconENG.svg",
+			valueIMG: "uploads/iconENG.svg",
 		},
 		{
 			valueText: "Ru",
-			valueIMG: "http://localhost:5000/uploads/iconRus.svg",
+			valueIMG: "uploads/iconRus.svg",
 		},
 	]
 
 	const getData = async () => {
-		await axios.get("http://localhost:5000/coins")
+		await axios.get(BackLink + "coins")
 			.then((res => {
 				setArrCostValue(res.data)
 				setCostMainValue(res.data[0])
@@ -61,8 +61,8 @@ export const HeaderTopRow = () => {
 
 	return (
 		<div className='header_top_row'>
-			<BoardBlockColum boardStatus={costBoardStatus} arrValue={costArrValue} setMainIcon={(obj) => setCostMainIcon(obj)} mainValue={costMainValue} openBoard={openCostBoard} />
-			<BoardBlockColum boardStatus={lanBoardStatus} arrValue={lanArrValue} setMainIcon={(obj) => setLanMainIcon(obj)} mainValue={lanMainValue} openBoard={openLanBoard} />
+			<BoardBlockColum BackLink={BackLink} boardStatus={costBoardStatus} arrValue={costArrValue} setMainIcon={(obj) => setCostMainIcon(obj)} mainValue={costMainValue} openBoard={openCostBoard} />
+			<BoardBlockColum BackLink={BackLink} boardStatus={lanBoardStatus} arrValue={lanArrValue} setMainIcon={(obj) => setLanMainIcon(obj)} mainValue={lanMainValue} openBoard={openLanBoard} />
 		</div>
 	)
 }

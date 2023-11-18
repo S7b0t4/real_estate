@@ -23,7 +23,7 @@ const SecondPage = ({BackLink}) => {
   }, [])
 	return ( 
 		<div>
-			<SecondHeader/>
+			<SecondHeader BackLink={BackLink}/>
 			<SecondMain itemInfo={itemInfo}/>
 			<SecondFooter itemInfo={itemInfo} BackLink={BackLink}/>
 		</div>

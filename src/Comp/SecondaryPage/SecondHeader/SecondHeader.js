@@ -1,8 +1,8 @@
 import { SecondHeaderRow } from './SecondHeaderRow';
-const SecondHeader = () => {
+const SecondHeader = ({BackLink}) => {
 	return ( 
 		<div>
-			<SecondHeaderRow/>
+			<SecondHeaderRow BackLink={BackLink}/>
 		</div>
 	);
 }

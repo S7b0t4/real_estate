@@ -7,7 +7,7 @@ import BoardBlockColum from './Boards/BoardBlockColum'
 
 
 
-export const SecondHeaderRow = () => {
+export const SecondHeaderRow = ({BackLink}) => {
 
 	const [arrCostValue, setArrCostValue] = useState([])
 
@@ -16,16 +16,16 @@ export const SecondHeaderRow = () => {
 	const arrLanValue = [
 		{
 			valueText: "Eng",
-			valueIMG: "http://localhost:5000/uploads/iconENG.svg",
+			valueIMG: "uploads/iconENG.svg",
 		},
 		{
 			valueText: "Ru",
-			valueIMG: "http://localhost:5000/uploads/iconRus.svg",
+			valueIMG: "uploads/iconRus.svg",
 		},
 	]
 
 	const getData = async () => {
-		await axios.get("http://localhost:5000/coins")
+		await axios.get(BackLink + "coins")
 			.then((res => {
 				setArrCostValue(res.data)
 				setCostMainValue(res.data[0])
@@ -65,14 +65,14 @@ export const SecondHeaderRow = () => {
 	return (
 		<div className='header_border'>
 			<div className='header_top_row'>
-				<BoardBlockColum boardStatus={costBoardStatus} arrValue={costArrValue} setMainIcon={(obj)=>setCostMainIcon(obj)} mainValue={costMainValue} openBoard={openCostBoard}/>
+				<BoardBlockColum BackLink={BackLink} boardStatus={costBoardStatus} arrValue={costArrValue} setMainIcon={(obj)=>setCostMainIcon(obj)} mainValue={costMainValue} openBoard={openCostBoard}/>
 				<div className="rainbow_text">
 					<div className="rainbow_text_item yellow">showmehome.io</div>
 					<div className="rainbow_text_item pink">showmehome.io</div>
 					<div className="rainbow_text_item green">showmehome.io</div>
 					<div className="rainbow_text_item orange">showmehome.io</div>
 				</div>
-				<BoardBlockColum boardStatus={lanBoardStatus} arrValue={lanArrValue} setMainIcon={(obj)=>setLanMainIcon(obj)} mainValue={lanMainValue} openBoard={openLanBoard}/>
+				<BoardBlockColum BackLink={BackLink} boardStatus={lanBoardStatus} arrValue={lanArrValue} setMainIcon={(obj)=>setLanMainIcon(obj)} mainValue={lanMainValue} openBoard={openLanBoard}/>
 			</div> 
 		</div>
 	)

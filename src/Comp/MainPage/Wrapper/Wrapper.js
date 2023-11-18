@@ -3,10 +3,10 @@ import { Header } from '../Header/Header'
 import Middle from '../Middle/Middle'
 import "./Wrapper.css"
 
-export const Wrapper = ({testArrForMapProductBlocks}) => {
+export const Wrapper = ({testArrForMapProductBlocks, BackLink}) => {
 	return (
 		<div>
-			<Header />
+			<Header BackLink={BackLink} />
 			<Middle testArrForMapProductBlocks={testArrForMapProductBlocks}/>
 		</div>
 	)
