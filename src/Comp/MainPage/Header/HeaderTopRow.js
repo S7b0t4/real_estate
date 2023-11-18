@@ -1,82 +1,68 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import "./HeaderTopRow.css"
 
 import BoardBlockColum from './Boards/BoardBlockColum'
 
-import iconENG from "../../imgSource/iconENG.svg"
-import iconBTN from "../../imgSource/iconBTC.svg"
-import iconEffir from "../../imgSource/iconEffir.svg"
-import iconTcoin from "../../imgSource/iconTcoin.svg"
-import iconRus from "../../imgSource/iconRus.svg"
-
-const arrCostValue = [
-	{
-		valueText: "~$21,822.74",
-		valueIMG: iconBTN,
-	},
-	{
-		valueText: "~$1,218.31",
-		valueIMG: iconEffir,
-	},
-	{
-		valueText: "~$0.9994",
-		valueIMG: iconTcoin,
-	}
-]
-
-const arrLanValue = [
-	{
-		valueText: "Eng",
-		valueIMG: iconENG,
-	},
-	{
-		valueText: "Ru",
-		valueIMG: iconRus,
-	},
-]
-
 export const HeaderTopRow = () => {
 
-	const [costMainValue, setCostMainValue] = useState({
-		valueText: "~$21,822.74",
-		valueIMG: iconBTN,
-	})
-	const [lanMainValue, setLanMainValue] = useState({
-		valueText: "Eng",
-		valueIMG: iconENG,
-	})
+	const [arrCostValue, setArrCostValue] = useState([])
 
-	const costArrValue = arrCostValue.filter((item)=>{
+	const [costMainValue, setCostMainValue] = useState({})
+
+	const arrLanValue = [
+		{
+			valueText: "Eng",
+			valueIMG: "http://localhost:5000/uploads/iconENG.svg",
+		},
+		{
+			valueText: "Ru",
+			valueIMG: "http://localhost:5000/uploads/iconRus.svg",
+		},
+	]
+
+	const getData = async () => {
+		await axios.get("http://localhost:5000/coins")
+			.then((res => {
+				setArrCostValue(res.data)
+				setCostMainValue(res.data[0])
+			}))
+	}
+
+	useEffect(() => getData(), [])
+
+	const [lanMainValue, setLanMainValue] = useState(arrLanValue[0])
+
+	const costArrValue = arrCostValue.filter((item) => {
 		return item.valueText !== costMainValue.valueText
 	})
-	const lanArrValue = arrLanValue.filter((item)=>{
+	const lanArrValue = arrLanValue.filter((item) => {
 		return item.valueText !== lanMainValue.valueText
 	})
 
- 	const setCostMainIcon = (obj) => {
+	const setCostMainIcon = (obj) => {
 		setCostMainValue(obj)
 		openCostBoard()
- 	}
-	 const setLanMainIcon = (obj) => {
+	}
+	const setLanMainIcon = (obj) => {
 		setLanMainValue(obj)
 		openLanBoard()
- 	}
+	}
 
 	const [costBoardStatus, setCostBoardStatus] = useState(false)
 	const [lanBoardStatus, setLangBoardStatus] = useState(false)
 
-	const openCostBoard = () =>{
+	const openCostBoard = () => {
 		setCostBoardStatus(!costBoardStatus)
 	}
-	const openLanBoard = () =>{
+	const openLanBoard = () => {
 		setLangBoardStatus(!lanBoardStatus)
 	}
 
 	return (
 		<div className='header_top_row'>
-			<BoardBlockColum boardStatus={costBoardStatus} arrValue={costArrValue} setMainIcon={(obj)=>setCostMainIcon(obj)} mainValue={costMainValue} openBoard={openCostBoard}/>
-			<BoardBlockColum boardStatus={lanBoardStatus} arrValue={lanArrValue} setMainIcon={(obj)=>setLanMainIcon(obj)} mainValue={lanMainValue} openBoard={openLanBoard}/>
-		</div> 
+			<BoardBlockColum boardStatus={costBoardStatus} arrValue={costArrValue} setMainIcon={(obj) => setCostMainIcon(obj)} mainValue={costMainValue} openBoard={openCostBoard} />
+			<BoardBlockColum boardStatus={lanBoardStatus} arrValue={lanArrValue} setMainIcon={(obj) => setLanMainIcon(obj)} mainValue={lanMainValue} openBoard={openLanBoard} />
+		</div>
 	)
 }

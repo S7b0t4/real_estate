@@ -22,7 +22,6 @@ const App = () => {
 
   useEffect(()=>{
     getData()
-    console.log(testArrForMapProductBlocks)
   }, [])
   
 

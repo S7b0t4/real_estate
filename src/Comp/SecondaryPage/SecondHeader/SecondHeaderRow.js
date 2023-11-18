@@ -1,51 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import "./SecondHeaderRow.css"
 
 import BoardBlockColum from './Boards/BoardBlockColum'
 
-import iconENG from "../../imgSource/iconENG.svg"
-import iconBTN from "../../imgSource/iconBTC.svg"
-import iconEffir from "../../imgSource/iconEffir.svg"
-import iconTcoin from "../../imgSource/iconTcoin.svg"
-import iconRus from "../../imgSource/iconRus.svg"
 
-const arrCostValue = [
-	{
-		valueText: "~$21,822.74",
-		valueIMG: iconBTN,
-	},
-	{
-		valueText: "~$1,218.31",
-		valueIMG: iconEffir,
-	},
-	{
-		valueText: "~$0.9994",
-		valueIMG: iconTcoin,
-	}
-]
-
-const arrLanValue = [
-	{
-		valueText: "Eng",
-		valueIMG: iconENG,
-	},
-	{
-		valueText: "Ru",
-		valueIMG: iconRus,
-	},
-]
 
 export const SecondHeaderRow = () => {
 
-	const [costMainValue, setCostMainValue] = useState({
-		valueText: "~$21,822.74",
-		valueIMG: iconBTN,
-	})
-	const [lanMainValue, setLanMainValue] = useState({
-		valueText: "Eng",
-		valueIMG: iconENG,
-	})
+	const [arrCostValue, setArrCostValue] = useState([])
+
+	const [costMainValue, setCostMainValue] = useState({})
+
+	const arrLanValue = [
+		{
+			valueText: "Eng",
+			valueIMG: "http://localhost:5000/uploads/iconENG.svg",
+		},
+		{
+			valueText: "Ru",
+			valueIMG: "http://localhost:5000/uploads/iconRus.svg",
+		},
+	]
+
+	const getData = async () => {
+		await axios.get("http://localhost:5000/coins")
+			.then((res => {
+				setArrCostValue(res.data)
+				setCostMainValue(res.data[0])
+			}))
+	}
+
+	useEffect(() => getData(), [])
+
+	const [lanMainValue, setLanMainValue] = useState(arrLanValue[0])
 
 	const costArrValue = arrCostValue.filter((item)=>{
 		return item.valueText !== costMainValue.valueText
