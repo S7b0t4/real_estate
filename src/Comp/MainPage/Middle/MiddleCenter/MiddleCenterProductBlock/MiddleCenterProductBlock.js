@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 
-const MiddleCenterProductBlock = ({prop, index}) => {
+const MiddleCenterProductBlock = ({BackLink, prop, index}) => {
 
 	const valueCostIcon = (bool) =>{
 		if(bool){
@@ -16,7 +16,7 @@ const MiddleCenterProductBlock = ({prop, index}) => {
 	
 	const mapCostArr = prop.cost.map((obj)=>(
 		<div>
-			<img src={obj.img} alt="" className={valueCostIcon(obj.value)} />
+			<img src={BackLink+"uploads/"+obj.img} alt="" className={valueCostIcon(obj.value)} />
 		</div>
 	))
 

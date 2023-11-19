@@ -1,7 +1,7 @@
 import MiddleCenterProductBlock from './MiddleCenterProductBlock/MiddleCenterProductBlock'
 import "./MiddleCenterMap.css"
 
-const MiddleCenterMap = ({filter, testArrForMapProductBlocks}) => {
+const MiddleCenterMap = ({BackLink, filter, testArrForMapProductBlocks}) => {
 
 	const productBlockFiltering = (filterItem, Filter = "All") => {
 		for (var i = 0; i < filterItem.filterTag.length; i++) {
@@ -18,7 +18,7 @@ const MiddleCenterMap = ({filter, testArrForMapProductBlocks}) => {
 	
 	
 	const mapArrWithProductBlocks = assembling.map((obj, index)=>(
-		<MiddleCenterProductBlock prop={obj} index={index} key={index}/>
+		<MiddleCenterProductBlock BackLink={BackLink} prop={obj} index={index} key={index}/>
 	))
 
 	return ( 

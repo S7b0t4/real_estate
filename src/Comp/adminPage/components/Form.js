@@ -21,23 +21,23 @@ const Form = ({BackLink}) => {
     filterTag: ["All"],
     cost: [
       {
-        img: `${BackLink}src/iconBitCoin.svg`,
+        img: `iconBitCoin.svg`,
         value: false,
       },
       {
-        img: `${BackLink}src/iconTonCoin.svg`,
+        img: `iconTonCoin.svg`,
         value: false,
       },
       {
-        img: `${BackLink}src/iconEfirCoin.svg`,
+        img: `iconEfirCoin.svg`,
         value: false,
       },
       {
-        img: `${BackLink}src/iconDHCoin.png`,
+        img: `iconDHCoin.png`,
         value: false,
       },
       {
-        img: `${BackLink}src/iconBCoin.png`,
+        img: `iconBCoin.png`,
         value: false,
       },
     ],
@@ -135,7 +135,7 @@ const Form = ({BackLink}) => {
 			<IMGInput inputDescription={"squareImg"} inputMultiple changeEvent={(event)=>changeFile(event, "squareImg")} />
 			<IMGInput inputDescription={"iconMapIMG"} inputMultiple={false} changeEvent={(event)=>changeFile(event, "iconMapIMG")} />
 			<FilterInput inputDescription={"filterTag"} handleButtonClick={(value)=>handleButtonClick(value)} form={form}/>
-			<MoneyTypeInput inputDescription={"Cost money"} form={form} />
+			<MoneyTypeInput BackLink={BackLink} inputDescription={"Cost money"} form={form} />
       <TextAreaInput inputDescription={"Description"} setInputValue={(value)=>setValueForm(value, "textInfo")}/>
 			<button onClick={saveForm}>Save</button>
 		</div>

@@ -1,8 +1,8 @@
-const MoneyTypeInput = ({ inputDescription, onChangeBoolean, form }) => {
+const MoneyTypeInput = ({ BackLink, inputDescription, onChangeBoolean, form }) => {
 
 	const mapCost = form.cost.map((i, index) => (
 		<div className='colum' key={index}>
-			<img src={i.img} alt={i.value} />
+			<img src={BackLink+"uploads/"+i.img} alt={i.value} />
 			<input type="checkbox" onClick={() => i.value = !i.value}/>
 		</div>
 	))
