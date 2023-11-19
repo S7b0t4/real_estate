@@ -19,12 +19,11 @@ const SecondPage = ({BackLink}) => {
 
   useEffect(()=>{
     getData()
-    console.log(itemInfo)
   }, [])
 	return ( 
 		<div>
 			<SecondHeader BackLink={BackLink}/>
-			<SecondMain itemInfo={itemInfo}/>
+			<SecondMain BackLink={BackLink} itemInfo={itemInfo}/>
 			<SecondFooter itemInfo={itemInfo} BackLink={BackLink}/>
 		</div>
 	);

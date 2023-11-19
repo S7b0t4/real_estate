@@ -2,10 +2,10 @@ import SecondMainTop from './SecondMainTop';
 import SecondMainCenter from './SecondMainCenter';
 import SecondMainBottom from './SecondMainBottom';
 
-const SecondMain = ({itemInfo}) => {
+const SecondMain = ({BackLink, itemInfo}) => {
 	return ( 
 		<div>
-			<SecondMainTop itemInfo={itemInfo}/>
+			<SecondMainTop BackLink={BackLink} itemInfo={itemInfo}/>
 			<SecondMainCenter squareImg={itemInfo.squareImg} mainIMG={itemInfo.mainIMG}/>
 			<SecondMainBottom itemInfo={itemInfo}/>
 		</div>

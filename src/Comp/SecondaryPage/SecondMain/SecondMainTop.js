@@ -2,7 +2,7 @@ import iconPosition from "../../imgSource/iconPosition.svg"
 import iconShare from "../../imgSource/iconShare.svg"
 import iconArrayRight from "../../imgSource/iconArrayRight.svg"
 
-const SecondMainTop = ({itemInfo}) => {
+const SecondMainTop = ({BackLink, itemInfo}) => {
 
 	const valueCostIcon = (bool) =>{
 		if(bool){
@@ -13,7 +13,7 @@ const SecondMainTop = ({itemInfo}) => {
 	
 	const mapCostArr = itemInfo.cost.map((obj)=>(
 		<div>
-			<img src={obj.img} alt="" className={valueCostIcon(obj.value)} />
+			<img src={BackLink+"uploads/"+obj.img} alt="" className={valueCostIcon(obj.value)} />
 		</div>
 	))
 

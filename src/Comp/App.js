@@ -16,7 +16,6 @@ const App = () => {
   const getData = async () => {
     await axios.get(BackLink)
       .then((res => {
-        console.log(res.data)
         setTestArrForMapProductBlocks(res.data)
       }))
   }
