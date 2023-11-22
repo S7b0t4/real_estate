@@ -118,7 +118,7 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 140%; /* 19.6px */
-	opacity: 0.5;
+	opacity: 0.9;
 }
 .second_main_bottom_big_row_button_row_button{
 	background: #EB2D47;
@@ -299,7 +299,9 @@
 		display: none;
 	}
 	.adoptive_second_main_bottom{
-		display: block;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 	}
 	.second_main_top{
 		display: none;

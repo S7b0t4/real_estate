@@ -7,7 +7,7 @@ const SecondMain = ({BackLink, itemInfo}) => {
 		<div>
 			<SecondMainTop BackLink={BackLink} itemInfo={itemInfo}/>
 			<SecondMainCenter squareImg={itemInfo.squareImg} mainIMG={itemInfo.mainIMG}/>
-			<SecondMainBottom itemInfo={itemInfo}/>
+			<SecondMainBottom BackLink={BackLink} itemInfo={itemInfo}/>
 		</div>
 	);
 }

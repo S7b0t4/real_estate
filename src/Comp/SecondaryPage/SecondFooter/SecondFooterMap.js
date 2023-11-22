@@ -22,7 +22,7 @@ const MiddleCenterMap = ({BackLink}) => {
   }, [])
 	
 	const mapArrWithProductBlocks = arrInfo.map((obj, index)=>(
-		<SecondFooterProductBlock prop={obj} index={index} key={index}/>
+		<SecondFooterProductBlock BackLink={BackLink} prop={obj} index={index} key={index}/>
 	))
 
 	return ( 

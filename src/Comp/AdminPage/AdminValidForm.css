@@ -1,0 +1,48 @@
+.admin_valid_form_wrapper{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.admin_valid_form_block{
+	padding: 10px;
+	border: 0.5px solid purple;
+	border-radius: 15px;
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.admin_valid_form_title{
+	font-size: 20px;
+	text-align: center;
+}
+.admin_valid_form_input{
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 15px;
+}
+
+.admin_valid_form_button{
+	padding: 10px;
+	background-color: 0;
+
+}
+
+.admin_valid_form_message{
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.alert{
+	background-color: greenyellow;
+}
+.err{
+	background-color: red;
+}

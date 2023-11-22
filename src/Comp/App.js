@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Wrapper } from './MainPage/Wrapper/Wrapper'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SecondPage from './SecondaryPage/SecondPage'
-import Form from "./adminPage/components/Form"
+import AdminPage from './AdminPage/AdminPage'
 
 
 import axios from 'axios'
@@ -28,8 +28,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/admin" element={<AdminPage BackLink={BackLink}/>} />
         <Route path="/" element={<Wrapper BackLink={BackLink} testArrForMapProductBlocks={testArrForMapProductBlocks} />} />
-        <Route path="/admin" element={<Form BackLink={BackLink} />} />
         <Route path={"/:id"} element={<SecondPage BackLink={BackLink} />} />
       </Routes>
     </BrowserRouter>

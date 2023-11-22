@@ -4,6 +4,8 @@ import SecondFooterBottom from './SecondFooterBottom';
 import SecondFooterAdoptive from './SecondFooterAdoptive';
 import { useState } from 'react'
 
+import "./SecondFooter.css"
+
 const SecondFooter = ({itemInfo, BackLink}) => {
 	const [mainValue, setMainValue] = useState("about")
 	return ( 
