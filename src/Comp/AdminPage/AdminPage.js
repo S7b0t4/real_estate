@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 import './AdminPage.css' 
-import AdminValidForm from './AdminValidForm'
-import Form from "./components/Form"
+import AdminValidForm from './AdminValidForm/AdminValidForm'
+import Form from "./AdminForm/AdminForm"
 
 const AdminPage = ({BackLink}) => {
-	const [value, setValue] = useState()
+	const [value, setValue] = useState(true)
 	const verefy = (i) => {
 		setValue(i)
 	}

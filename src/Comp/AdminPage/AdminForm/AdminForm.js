@@ -1,18 +1,29 @@
 import { useState } from 'react'
-import "./Form.css"
+import "./AdminForm.css"
 import axios from 'axios';
 
 import TextAreaInput from "./inputs/TextAreaInput"
 import TextInput from './inputs/TextInput';
+import TypeInput from './inputs/TypeInput';
 import IMGInput from './inputs/IMGInput';
 import FilterInput from "./inputs/FilterInput"
 import MoneyTypeInput from "./inputs/MoneyTypeInput"
 
-const Form = ({BackLink}) => {
+const AdminForm = ({BackLink}) => {
 
 	const [form, setForm] = useState({
 		title: "",
     subTitle: "",
+    type: [
+      {
+        name: "Sell",
+        value:false
+      },
+      {
+        name: "Rent",
+        value:false
+      },
+    ],
     sell: "",
     rent: "",
     squareImg: [],
@@ -67,10 +78,9 @@ const Form = ({BackLink}) => {
     ],
   }
 	)
-
 	const postObj = () => {
-		const { title, subTitle, sell, rent, link, img, squareImg, mainIMG, filterTag, compInfo, cost, infoNumber, iconMapIMG, tag, textInfo, linkInfo,} = form
-		axios.post(BackLink, {title, subTitle, sell, rent, link, img, squareImg, mainIMG, filterTag, compInfo, cost, infoNumber, iconMapIMG, tag, textInfo, linkInfo})
+		const { title, subTitle, type, sell, rent, link, img, squareImg, mainIMG, filterTag, compInfo, cost, infoNumber, iconMapIMG, tag, textInfo, linkInfo,} = form
+		axios.post(BackLink, {title, subTitle, type, sell, rent, link, img, squareImg, mainIMG, filterTag, compInfo, cost, infoNumber, iconMapIMG, tag, textInfo, linkInfo})
 		.then(function (response) {
 			console.log(response);
 		})
@@ -92,7 +102,7 @@ const Form = ({BackLink}) => {
   }
 
 	const saveForm = () => {
-		console.log(form)
+		console.log("seve")
 		postObj()
 	}
 
@@ -102,7 +112,7 @@ const Form = ({BackLink}) => {
 	}
 
   const changeFile = (event, Name) => {
-		const files = event.target.files
+		const files = event
 		const arr = []
 		for(let i = 0; i< files.length; i++){
 			arr.push( `${BackLink}uploads/`+files[i].name)
@@ -126,20 +136,23 @@ const Form = ({BackLink}) => {
   };
 
 	return ( 
-		<div>
-			<TextInput inputDescription={"Title"} setInputValue={(value)=>setValueForm(value, "title")}/>
-			<TextInput inputDescription={"Address"} setInputValue={(value)=>setValueForm(value, "subTitle")}/>
-			<TextInput inputDescription={"How many cost for sell"} setInputValue={(value)=>setValueForm(value, "sell")}/>
-			<TextInput inputDescription={"How many cost for rent"} setInputValue={(value)=>setValueForm(value, "rent")}/>
-			<IMGInput inputDescription={"mainIMG"} inputMultiple changeEvent={(event)=>changeFile(event, "mainIMG")} />
-			<IMGInput inputDescription={"squareImg"} inputMultiple changeEvent={(event)=>changeFile(event, "squareImg")} />
-			<IMGInput inputDescription={"iconMapIMG"} inputMultiple={false} changeEvent={(event)=>changeFile(event, "iconMapIMG")} />
-			<FilterInput inputDescription={"filterTag"} handleButtonClick={(value)=>handleButtonClick(value)} form={form}/>
+		<div className='admin_form_colum'>
+      <FilterInput inputDescription={"Select type of realEstate"} handleButtonClick={(value)=>handleButtonClick(value)} form={form}/>
+			<TextInput className="admin_form_title" inputDescription={"Title"} setInputValue={(value)=>setValueForm(value, "title")}/>
+			<TextInput className="admin_form_subtitle" inputDescription={"Address"} setInputValue={(value)=>setValueForm(value, "subTitle")}/>
+      <TypeInput type={form.type} inputDescription={"Sell type"} setInputValue={(value)=>setValueForm(value, "type")}/>
+			{<TextInput inputDescription={"How many cost for sell"} setInputValue={(value)=>setValueForm(value, "sell")}/>}
+			{<TextInput inputDescription={"How many cost for rent"} setInputValue={(value)=>setValueForm(value, "rent")}/>}
+			<IMGInput BackLink={BackLink} inputDescription={"Select main IMG"} inputMultiple changeEvent={(event)=>changeFile(event, "mainIMG")} />
+			<IMGInput BackLink={BackLink} inputDescription={"Select square IMG"} inputMultiple changeEvent={(event)=>changeFile(event, "squareImg")} />
+			<IMGInput BackLink={BackLink} inputDescription={"Select map IMG"} inputMultiple={false} changeEvent={(event)=>changeFile(event, "iconMapIMG")} />
 			<MoneyTypeInput BackLink={BackLink} inputDescription={"Cost money"} form={form} />
       <TextAreaInput inputDescription={"Description"} setInputValue={(value)=>setValueForm(value, "textInfo")}/>
-			<button onClick={saveForm}>Save</button>
+			<div>
+        <button className='mainButton' onClick={saveForm}>Save</button>
+      </div>
 		</div>
 	);
 }
  
-export default Form;
+export default AdminForm;

@@ -1,4 +1,4 @@
-const MoneyTypeInput = ({ BackLink, inputDescription, onChangeBoolean, form }) => {
+const MoneyTypeInput = ({ BackLink, inputDescription, form }) => {
 
 	const mapCost = form.cost.map((i, index) => (
 		<div className='colum' key={index}>
@@ -8,14 +8,14 @@ const MoneyTypeInput = ({ BackLink, inputDescription, onChangeBoolean, form }) =
 	))
 
 	return ( 
-		<div className='colum'>
-		<div>
-			{inputDescription}:
+		<div className='colum gap10'>
+			<div className='input_title'>
+				{inputDescription}:
+			</div>
+			<div className='gap10'>
+				{mapCost}
+			</div>
 		</div>
-		<div className='gap10'>
-			{mapCost}
-		</div>
-	</div>
 	);
 }
  
