@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import axios from 'axios'
 
 const IMGInput = ({BackLink, inputDescription, changeEvent, inputMultiple}) => {
 
@@ -12,14 +13,27 @@ const IMGInput = ({BackLink, inputDescription, changeEvent, inputMultiple}) => {
 
 	const imgListMap = imgList.map((i)=>(
 		<div>
-			<img src={BackLink + "uploads/" + i.name} alt="" />
+			<img src={BackLink + "uploads/" + i} alt="" />
 		</div>	
 	))
 
 	const saveImg = (event) =>{
-		setImgList(Object.values(event.target.files));
-		changeEvent(event.target.files)
+		setImgList(Object.values(event.target.files).map(i=>i.name));
+		changeEvent(Object.values(event.target.files).map(i=>BackLink + "uploads/" + i.name))
+		postPhoto(Object.values(event.target.files))
 	}
+
+	const postPhoto = (file) => {
+    const data = new FormData()
+    data.append('file', file)
+    axios.post(`${BackLink}post-photo`, data)
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
 
 	return ( 
 		<div className='colum'>

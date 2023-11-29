@@ -1,4 +1,4 @@
-const FilterInput = ({inputDescription, handleButtonClick, form}) => {
+const FilterInput = ({inputDescription, handleButtonClick, filterTag}) => {
 
 	const filterTags = ["Seaside","Mountains","Historical","Residence","ForLife","BigCityLife","Prestige","Investment","Commecial","Designer"]
 
@@ -8,7 +8,7 @@ const FilterInput = ({inputDescription, handleButtonClick, form}) => {
 		</button>
 	))
 
-	const mapFilterTag = form.filterTag.map((i, index) => (
+	const mapFilterTag = filterTag.map((i, index) => (
 		<div className='input_text' key={index}>
 			{i}
 		</div>
