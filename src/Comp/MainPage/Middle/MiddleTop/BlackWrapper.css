@@ -1,8 +1,0 @@
-.black_wrapper{
-	background: rgba(33, 33, 33, 0.50);
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1000;
-}

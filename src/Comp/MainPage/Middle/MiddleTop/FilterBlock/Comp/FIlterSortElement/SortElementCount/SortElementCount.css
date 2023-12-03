@@ -1,0 +1,43 @@
+.count_title{
+	color: #3A3A3A;
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.count_row{
+	display: flex;
+}
+.count_block{
+	padding: 5px;
+	border: 1px solid #E6E6E6;;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.count_block_button{
+	padding: 0;
+	border: 0;
+	background: 0;
+}
+.count_block_title{
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #E6E6E6;
+	cursor: pointer;
+	color: #3A3A3A;
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.count_colum{
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}

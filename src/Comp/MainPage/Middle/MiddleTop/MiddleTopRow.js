@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import MiddleTopRowFilter from './MiddleTopRowFilter'
-import MiddleTopRowFilterBlock from './MiddleTopRowFilterBlock/MiddleTopRowFilterBlock'
 import "./MiddleTopRow.css"
-import BlackWrapper from "./BlackWrapper"
+import FilterWrapper from './FilterBlock/FilterWrapper'
 
 function MiddleTopRow({onGetFilter}) {
 	const [viewParam, setViewParam] = useState(false)
@@ -13,10 +12,9 @@ function MiddleTopRow({onGetFilter}) {
 
 	return (
 		<div>
-			<BlackWrapper viewParam={viewParam} />
 			<div>
-				<div className='minddle_top_container'>
-					<MiddleTopRowFilterBlock viewParam={viewParam} onChangeViewParam={ChangeViewParam} />
+				<div className='middle_top_container'>
+					<FilterWrapper viewParam={viewParam} ChangeViewParam={ChangeViewParam}/>
 				</div>
 				<MiddleTopRowFilter onChangeViewParam={ChangeViewParam} onGetFilter={item=>onGetFilter(item)} />
 			</div>

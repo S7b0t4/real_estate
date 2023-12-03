@@ -1,0 +1,31 @@
+.sort_element{
+	color: #3A3A3A;
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.select_block{
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #E6E6E6;
+	cursor: pointer;
+}
+.select_block_title{
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #E6E6E6;
+	cursor: pointer;
+	color: #3A3A3A;
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.select_colum{
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
