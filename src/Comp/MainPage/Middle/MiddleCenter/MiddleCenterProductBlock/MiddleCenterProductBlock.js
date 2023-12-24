@@ -1,34 +1,33 @@
 import "./MiddleCenterProductBlock.css"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 
-const MiddleCenterProductBlock = ({BackLink, prop, index}) => {
-
-	const valueCostIcon = (bool) =>{
-		if(bool){
+const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
+	const valueCostIcon = (bool) => {
+		if (bool) {
 			return "costIconVisibility"
 		}
 		return "costIconUnVisibility"
 	}
-	
-	const mapCostArr = prop.cost.map((obj)=>(
+
+	const mapCostArr = prop.cost.map((obj) => (
 		<div>
-			<img src={BackLink+"uploads/"+obj.img} alt="" className={valueCostIcon(obj.value)} />
+			<img src={BackLink + "uploads/" + obj.img} alt="" className={valueCostIcon(obj.value)} />
 		</div>
 	))
 
-	const mapTagArr = prop.tag.map((item)=>(
+	const mapTagArr = prop.tag.map((item) => (
 		<div className="ghostTeg">
 			{item}
 		</div>
 	))
 
-	const visibilityTag = (index) =>{
-		if(index === 0){
-			return(
+	const visibilityTag = (index) => {
+		if (index === 0) {
+			return (
 				<div className='ghostTegBunch'>
 					{mapTagArr}
 				</div>
@@ -36,28 +35,41 @@ const MiddleCenterProductBlock = ({BackLink, prop, index}) => {
 		}
 	}
 
-	const mapImgArr = prop.squareImg.map((item , index) => (
-		<SwiperSlide key={index}> 
+	const mapImgArr = prop.squareImg.map((item, index) => (
+		<SwiperSlide key={index}>
 			{visibilityTag(index)}
-			<img src={item} alt="" className='middle_center_product_block_img'/>
+			<img src={item} alt="" className='middle_center_product_block_img' />
 		</SwiperSlide>
 	))
-	
-	
-	return ( 
+
+	const sellType = (i) => {
+		if(prop.type[i].value){
+			if(i === 0){
+				return (<div>{prop.sell}</div>)
+			}
+			if(i === 1){
+				return (<div>{prop.rent}</div>)
+			}
+		}
+		else{
+			return (<div>n/a</div>)
+		}
+	}
+
+	return (
 		<div className='middle_center_product_block' key={index}>
 			<Swiper
-			modules={[Pagination]}
-			pagination={{ clickable: false }}
-      spaceBetween={10}
-      slidesPerView={1}
-			className='middle_center_product_block_img_swiper'
-    	>
-      	{mapImgArr}
-    	</Swiper>
+				modules={[Pagination]}
+				pagination={{ clickable: false }}
+				spaceBetween={10}
+				slidesPerView={1}
+				className='middle_center_product_block_img_swiper'
+			>
+				{mapImgArr}
+			</Swiper>
 			<div className="middle_center_product_block_info">
 				<div className="middle_center_product_block_info_title_block">
-					<a className="middle_center_product_block_info_title" href={"/"+prop._id}>
+					<a className="middle_center_product_block_info_title" href={"/" + prop._id}>
 						{prop.title}
 					</a>
 					<div className="middle_center_product_block_info_subtitle">
@@ -66,8 +78,8 @@ const MiddleCenterProductBlock = ({BackLink, prop, index}) => {
 				</div>
 				<div className="middle_center_product_block_info_sell_row">
 					<div className="middle_center_product_block_info_sell_block">
-						<div className="middle_center_product_block_info_sell">Sale: {prop.sell}</div>
-						<div className="middle_center_product_block_info_sell">Rent: {prop.rent}</div>
+						<div className="middle_center_product_block_info_sell">Sale: {sellType(0)}</div>
+						<div className="middle_center_product_block_info_sell">Rent: {sellType(1)}</div>
 					</div>
 					<div className="middle_center_product_block_info_cost_row">
 						{mapCostArr}
@@ -75,7 +87,7 @@ const MiddleCenterProductBlock = ({BackLink, prop, index}) => {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
- 
-export default MiddleCenterProductBlock;
+
+export default MiddleCenterProductBlock

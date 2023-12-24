@@ -2,6 +2,7 @@ import "./MiddleTopRowFilter.css"
 import { FreeMode } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import axios from 'axios'
 
 
 import iconMiniFilter from "../../../imgSource/iconMiniFilter.svg"
@@ -76,10 +77,20 @@ const filterArr = [
 	},
 ]
 
-function MiddleTopRowFilter({onGetFilter, onChangeViewParam}) {
+function MiddleTopRowFilter({ BackLink, onGetFilter, onChangeViewParam}) {
 
 	const getFilterTag = (item) => {
 		onGetFilter(item)
+	}
+	
+	const changeFilter = (value) => {
+		axios.post(BackLink + "filter", {"sell": value})
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 	}
 	
 	const mapFilterArrAdoptive = filterArr.map((item, index)=>(
@@ -115,9 +126,8 @@ function MiddleTopRowFilter({onGetFilter, onChangeViewParam}) {
 						}
 					</div>
 					<div className="middle_top_row_filter_row_option_icon">
-						<div className="middle_top_row_filter_row_option_icon_btn">All</div>
-						<div className="middle_top_row_filter_row_option_icon_btn">Sell</div>
-						<div className="middle_top_row_filter_row_option_icon_btn">Rent</div>
+						<div onClick={()=>changeFilter(-1)} className="middle_top_row_filter_row_option_icon_btn">Mac</div>
+						<div onClick={()=>changeFilter(1)} className="middle_top_row_filter_row_option_icon_btn">Min</div>
 					</div>
 				</div>
 				<div className='middle_top_row_filter_adoptive'>

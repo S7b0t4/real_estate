@@ -7,7 +7,7 @@ import './FilterWrapper.css'
 const FilterWrapper = ({viewParam, ChangeViewParam}) => {
 	if (viewParam){
 		return (
-			<div className='filter_block_bg'>
+			<div className='filter_block_bg' onClick={ChangeViewParam}>
 				<FilterBlock ChangeViewParam={ChangeViewParam}/>
 			</div>
 		)

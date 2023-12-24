@@ -37,6 +37,8 @@
 	font-weight: 500;
 	line-height: normal;
 	text-transform: capitalize;
+	display: flex;
+	gap: 5px;
 }
 .middle_center_product_block_info_sell_row{
 	display: flex;

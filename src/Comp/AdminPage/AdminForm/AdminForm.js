@@ -13,8 +13,8 @@ const AdminForm = ({ BackLink }) => {
 
   const [title, setTitle] = useState("")
   const [subTitle, setSubTitle] = useState("")
-  const [sell, setSell] = useState()
-  const [rent, setRent] = useState()
+  const [sell, setSell] = useState("")
+  const [rent, setRent] = useState("")
   const [squareImg, setSquareImg] = useState([])
   const [mainIMG, setMainIMG] = useState()
   const [iconMapIMG, setIconMapIMG] = useState()

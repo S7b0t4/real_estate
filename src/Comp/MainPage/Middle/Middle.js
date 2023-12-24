@@ -6,7 +6,7 @@ const Midle = ({BackLink, testArrForMapProductBlocks}) => {
 	const [filter, setFilter] = useState()
 	return ( 
 	<div>
-		<MiddleTopRow onGetFilter={(item)=>setFilter(item)} />
+		<MiddleTopRow BackLink={BackLink} onGetFilter={(item)=>setFilter(item)} />
 		<MiddleCenter BackLink={BackLink} filter={filter} testArrForMapProductBlocks={testArrForMapProductBlocks}/> 
 	</div>
 	);

@@ -65,6 +65,7 @@ const array = [
 	},
 ]
 
+
 const ArrayMap = array.map((i) => {
 	if (i.type === "type") {
 		return (<SortElement title={i.title} selectBy={i.list}/>)
@@ -83,20 +84,22 @@ const getInfo = () => {
 
 const FilterBlock = ({ ChangeViewParam }) => {
 	return (
-		<div className='filter_block'>
-			<div className='filter_block_row' >
-				<div className='filter_block_row_title'>
-					FILTER
+		<div className='filter_modal' onClick={(e)=>e.stopPropagation()}>
+			 <div className='filter_block'>
+				<div className='filter_block_row' >
+					<div className='filter_block_row_title'>
+						FILTER
+					</div>
+					<button className='filter_block_row_button' onClick={ChangeViewParam} alt="cross" d>
+						<CrossSVG />
+					</button>
 				</div>
-				<button className='filter_block_row_button' onClick={ChangeViewParam} alt="cross" d>
-					<CrossSVG />
-				</button>
-			</div>
-			<div className='filter_block_colum' >
-				{ArrayMap}
-			</div>
-			<div className='filter_button_row'>
-				<button className='filter_button' onClick={getInfo}>Confirm</button>
+				<div className='filter_block_colum' >
+					{ArrayMap}
+				</div>
+				<div className='filter_button_row'>
+					<button className='filter_button' onClick={getInfo}>Confirm</button>
+				</div>
 			</div>
 		</div>
 	)
