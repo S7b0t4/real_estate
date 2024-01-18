@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import './SortElement.css'
 import MapElement from './MapElement'
 
-const SortElement = ({title, selectBy}) => {
+const SortElement = ({title, list, setValue}) => {
 	const [vive, setVive] = useState()
 	const [mainType, setMainType] = useState("Choose selection")
 
@@ -11,12 +11,18 @@ const SortElement = ({title, selectBy}) => {
 		setVive(!vive)
 	}
 
-	const lucky = selectBy.filter((text)=>{
+	const lucky = list.filter((text)=>{
 		return text !== mainType;
 	});
 
-	const elementMap = lucky.map((i)=>(
-		<MapElement item={i} changeMainType={(i)=>{setMainType(i); changeVive()}}/>
+	const changeValue = (i) => {
+		changeVive()
+		setMainType(i); 
+		setValue(i)
+	}
+
+	const elementMap = lucky.map((i, index)=>(
+		<MapElement key={index} item={i} changeMainType={(i)=>{changeValue(i)}}/>
 	))
 
 	return (

@@ -29,8 +29,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/admin" element={<AdminPage BackLink={BackLink}/>} />
-        <Route path="/" element={<Wrapper BackLink={BackLink} testArrForMapProductBlocks={testArrForMapProductBlocks} />}/>
-        <Route path={"/:id"} element={<SecondPage BackLink={BackLink} />} />
+        <Route  path="/" element={<Wrapper setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} getData={getData} BackLink={BackLink} testArrForMapProductBlocks={testArrForMapProductBlocks} />}/>
+        <Route path={"/:id"} element={<SecondPage BackLink={BackLink}/>} />
       </Routes>
     </BrowserRouter>
   )

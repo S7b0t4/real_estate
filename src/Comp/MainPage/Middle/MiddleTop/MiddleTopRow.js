@@ -3,7 +3,7 @@ import MiddleTopRowFilter from './MiddleTopRowFilter'
 import "./MiddleTopRow.css"
 import FilterWrapper from './FilterBlock/FilterWrapper'
 
-function MiddleTopRow({BackLink, onGetFilter}) {
+function MiddleTopRow({ setTestArrForMapProductBlocks, BackLink, getData, onGetFilter}) {
 	const [viewParam, setViewParam] = useState(false)
 
 	const ChangeViewParam = () =>{
@@ -14,9 +14,9 @@ function MiddleTopRow({BackLink, onGetFilter}) {
 		<div>
 			<div>
 				<div className='middle_top_container'>
-					<FilterWrapper viewParam={viewParam} ChangeViewParam={ChangeViewParam}/>
+					<FilterWrapper setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} BackLink={BackLink} viewParam={viewParam} ChangeViewParam={ChangeViewParam}/>
 				</div>
-				<MiddleTopRowFilter BackLink={BackLink} onChangeViewParam={ChangeViewParam} onGetFilter={item=>onGetFilter(item)} />
+				<MiddleTopRowFilter setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} BackLink={BackLink} onChangeViewParam={ChangeViewParam} onGetFilter={item=>onGetFilter(item)} />
 			</div>
 		</div>
 	)

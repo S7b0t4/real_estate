@@ -3,11 +3,11 @@ import { Header } from '../Header/Header'
 import Middle from '../Middle/Middle'
 import "./Wrapper.css"
 
-export const Wrapper = ({  testArrForMapProductBlocks, BackLink }) => {
+export const Wrapper = ({ setTestArrForMapProductBlocks, getData, testArrForMapProductBlocks, BackLink }) => {
 	return (
 		<div>
 			<Header BackLink={BackLink} />
-			<Middle BackLink={BackLink} testArrForMapProductBlocks={testArrForMapProductBlocks} />
+			<Middle setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} BackLink={BackLink} getData={getData} testArrForMapProductBlocks={testArrForMapProductBlocks} />
 		</div>
 	)
 }

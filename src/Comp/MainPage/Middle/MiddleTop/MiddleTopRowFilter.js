@@ -77,7 +77,7 @@ const filterArr = [
 	},
 ]
 
-function MiddleTopRowFilter({ BackLink, onGetFilter, onChangeViewParam}) {
+function MiddleTopRowFilter({ setTestArrForMapProductBlocks, BackLink, onGetFilter, onChangeViewParam}) {
 
 	const getFilterTag = (item) => {
 		onGetFilter(item)
@@ -86,7 +86,7 @@ function MiddleTopRowFilter({ BackLink, onGetFilter, onChangeViewParam}) {
 	const changeFilter = (value) => {
 		axios.post(BackLink + "filter", {"sell": value})
 		.then(function (response) {
-			console.log(response);
+			setTestArrForMapProductBlocks(response.data);
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -126,7 +126,7 @@ function MiddleTopRowFilter({ BackLink, onGetFilter, onChangeViewParam}) {
 						}
 					</div>
 					<div className="middle_top_row_filter_row_option_icon">
-						<div onClick={()=>changeFilter(-1)} className="middle_top_row_filter_row_option_icon_btn">Mac</div>
+						<div onClick={()=>changeFilter(-1)} className="middle_top_row_filter_row_option_icon_btn">Max</div>
 						<div onClick={()=>changeFilter(1)} className="middle_top_row_filter_row_option_icon_btn">Min</div>
 					</div>
 				</div>

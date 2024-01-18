@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import "./AdminForm.css"
 import axios from 'axios'
 
@@ -8,6 +8,9 @@ import TypeInput from './inputs/TypeInput'
 import IMGInput from './inputs/IMGInput'
 import FilterInput from "./inputs/FilterInput"
 import MoneyTypeInput from "./inputs/MoneyTypeInput"
+import NumberInput from './inputs/NumberInput'
+
+import Map from "./Components/Map"
 
 const AdminForm = ({ BackLink }) => {
 
@@ -15,12 +18,39 @@ const AdminForm = ({ BackLink }) => {
   const [subTitle, setSubTitle] = useState("")
   const [sell, setSell] = useState("")
   const [rent, setRent] = useState("")
+
+  const [infoNumbers, setInfoNumbers] = useState([
+    {
+      "title": "construction year",
+      "value": ""
+    },
+    {
+      "title": "floors",
+      "value": ""
+    },
+    {
+      "title": "total build area",
+      "value": ""
+    },
+    {
+      "title": "total living area",
+      "value": ""
+    },
+    {
+      "title": "bedrooms",
+      "value": ""
+    },
+    {
+      "title": "parking spaces",
+      "value": ""
+    },
+  ])
+
   const [squareImg, setSquareImg] = useState([])
   const [mainIMG, setMainIMG] = useState()
   const [iconMapIMG, setIconMapIMG] = useState()
   const [filterTag, setFilterTag] = useState(["All"])
-  const [linkInfo,  setLinkInfo] = useState("#")
-  const [textInfo,  setTextInfo] = useState("")
+  const [textInfo, setTextInfo] = useState("")
   const [type, setType] = useState([
     {
       name: "sell",
@@ -53,17 +83,11 @@ const AdminForm = ({ BackLink }) => {
       value: false,
     },
   ])
-  const [infoNumber, setInfoNumber] = useState([
-    {
-      text: "",
-      Num: "",
-    },
-  ])
   const [tag, setTag] = useState([
     '',
     ''
   ])
-  const [compInfo,  setCompInfo] = useState([
+  const [compInfo, setCompInfo] = useState([
     {
       title: "",
       text: ""
@@ -75,7 +99,7 @@ const AdminForm = ({ BackLink }) => {
   ])
 
   const postObj = () => {
-    axios.post(BackLink, { title, subTitle, type, sell, rent, squareImg, mainIMG, filterTag, compInfo, cost, infoNumber, iconMapIMG, tag, textInfo, linkInfo })
+    axios.post(BackLink, { title, subTitle, type, sell, rent, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, iconMapIMG, tag, textInfo })
       .then(function (response) {
         console.log(response)
       })
@@ -86,7 +110,6 @@ const AdminForm = ({ BackLink }) => {
 
   const saveForm = () => {
     console.log("seve")
-    console.log(title, subTitle, type, sell, rent, squareImg, mainIMG, filterTag, compInfo, cost, infoNumber, iconMapIMG, tag, textInfo, linkInfo)
     postObj()
   }
 
@@ -101,27 +124,54 @@ const AdminForm = ({ BackLink }) => {
     setFilterTag(newArray)
   }
 
-  
+
   const typeUpdateBooleanValue = (i) => {
     setType(prevArray =>
       prevArray.map(item =>
-         item.name === i ? { ...item, value: !item.value } : item
-       )
-     );
-   };
+        item.name === i ? { ...item, value: !item.value } : item
+      )
+    )
+  }
+
+  const handleChange = (value, index) => {
+    setInfoNumbers(prevState => 
+      prevState.map((item, ind) => 
+        ind === index 
+          ? { ...item, "value": value }
+          : item
+      ),
+    );
+  }
+  
+  useEffect(() => {
+    console.log(infoNumbers);
+  }, [infoNumbers]);
+  
+  
+  const mapInfoNumbers = infoNumbers.map((i, index) => (
+    <NumberInput inputDescription={i.title} key={index} setInputValue={(value) => handleChange(value, index)} />
+  ))
 
   return (
     <div className='admin_form_colum'>
       <FilterInput inputDescription={"Select type of realEstate"} handleButtonClick={(value) => filterTagHandleButtonClick(value)} filterTag={filterTag} />
+      <div> --- </div>
       <TextInput className="admin_form_title" inputDescription={"Title"} setInputValue={(value) => setTitle(value)} />
       <TextInput className="admin_form_subtitle" inputDescription={"Address"} setInputValue={(value) => setSubTitle(value)} />
-      <TypeInput type={type} inputDescription={"Sell type"} updateBooleanValue={(value) => {typeUpdateBooleanValue(value)}} />
-      {type[0].value && <TextInput inputDescription={`How many cost for sell`} setInputValue={(value) => setSell(value)} />}
-      {type[1].value && <TextInput inputDescription={`How many cost for rent`} setInputValue={(value) => setRent(value)} />}
+      <div> --- </div>
+      <TypeInput type={type} inputDescription={"Sell type"} updateBooleanValue={(value) => { typeUpdateBooleanValue(value) }} />
+      {(type[1].value && type[1].value) && <div> --- </div> }
+      {type[0].value && <NumberInput inputDescription={`How many cost for sell`} setInputValue={(value) => setSell(value)} />}
+      {type[1].value && <NumberInput inputDescription={`How many cost for rent`} setInputValue={(value) => setRent(value)} />}
+      <div> --- </div>
+      {mapInfoNumbers}
+      <div> --- </div>
       <IMGInput BackLink={BackLink} inputDescription={"Select main IMG"} inputMultiple changeEvent={(event) => setMainIMG(event)} />
       <IMGInput BackLink={BackLink} inputDescription={"Select square IMG"} inputMultiple changeEvent={(event) => setSquareImg(event)} />
-      <IMGInput BackLink={BackLink} inputDescription={"Select map IMG"} inputMultiple={false} changeEvent={(event) => setIconMapIMG(event)} />
+      <Map/>
+      <div> --- </div>
       <MoneyTypeInput BackLink={BackLink} inputDescription={"Cost money"} cost={cost} />
+      <div> --- </div>
       <TextAreaInput inputDescription={"Description"} setInputValue={(value) => setTextInfo(value)} />
       <div>
         <button className='mainButton' onClick={saveForm}>Save</button>

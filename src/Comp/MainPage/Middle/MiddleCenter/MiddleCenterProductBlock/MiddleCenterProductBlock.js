@@ -13,14 +13,14 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 		return "costIconUnVisibility"
 	}
 
-	const mapCostArr = prop.cost.map((obj) => (
-		<div>
+	const mapCostArr = prop.cost.map((obj, index) => (
+		<div key={index}>
 			<img src={BackLink + "uploads/" + obj.img} alt="" className={valueCostIcon(obj.value)} />
 		</div>
 	))
 
-	const mapTagArr = prop.tag.map((item) => (
-		<div className="ghostTeg">
+	const mapTagArr = prop.tag.map((item, index) => (
+		<div className="ghostTeg" key={index}>
 			{item}
 		</div>
 	))
@@ -28,7 +28,7 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 	const visibilityTag = (index) => {
 		if (index === 0) {
 			return (
-				<div className='ghostTegBunch'>
+				<div className='ghostTegBunch' key={index}>
 					{mapTagArr}
 				</div>
 			)

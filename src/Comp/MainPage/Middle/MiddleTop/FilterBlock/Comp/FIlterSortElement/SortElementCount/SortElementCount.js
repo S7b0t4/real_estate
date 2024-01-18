@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 
 import './SortElementCount.css'
 
-const SortElementCount = ({title}) => {
+const SortElementCount = ({title, setBedRoomCount}) => {
 	const [count, setCount] = useState(1)
 
 	const changeCount = (i) => {
 		if (i === "+"){
 			setCount(count + 1)
+			setBedRoomCount(count + 1)
 		}
 		if(i === "-" && count > 1){
 			setCount(count - 1)
+			setBedRoomCount(count - 1)
 		}
 	}
 

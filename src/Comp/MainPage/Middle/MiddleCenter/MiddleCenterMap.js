@@ -1,7 +1,7 @@
 import MiddleCenterProductBlock from './MiddleCenterProductBlock/MiddleCenterProductBlock'
 import "./MiddleCenterMap.css"
 
-const MiddleCenterMap = ({BackLink, filter, testArrForMapProductBlocks}) => {
+const MiddleCenterMap = ({BackLink, getData, filter, testArrForMapProductBlocks}) => {
 
 	const productBlockFiltering = (filterItem, Filter = "All") => {
 		for (var i = 0; i < filterItem.filterTag.length; i++) {

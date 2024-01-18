@@ -2,12 +2,12 @@ import MiddleTopRow from './MiddleTop/MiddleTopRow';
 import MiddleCenter from './MiddleCenter/MiddleCenter'
 import { useState } from 'react'
 
-const Midle = ({BackLink, testArrForMapProductBlocks}) => {
+const Midle = ({ setTestArrForMapProductBlocks, BackLink, getData, testArrForMapProductBlocks}) => {
 	const [filter, setFilter] = useState()
 	return ( 
 	<div>
-		<MiddleTopRow BackLink={BackLink} onGetFilter={(item)=>setFilter(item)} />
-		<MiddleCenter BackLink={BackLink} filter={filter} testArrForMapProductBlocks={testArrForMapProductBlocks}/> 
+		<MiddleTopRow setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} BackLink={BackLink} getData={getData} onGetFilter={(item)=>setFilter(item)} />
+		<MiddleCenter BackLink={BackLink} getData={getData} filter={filter} testArrForMapProductBlocks={testArrForMapProductBlocks}/> 
 	</div>
 	);
 }
