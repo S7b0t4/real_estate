@@ -7,17 +7,18 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const SecondPage = ({ BackLink }) => {
-	const params = useParams()
-	const [itemInfo, setItemInfo] = useState({ title: "", subTitle: "", sell: "", rent: "", squareImg: [], mainIMG: [], iconMapIMG: [], filterTag: ["All"], cost: [{ img: `${BackLink}src/iconBitCoin.svg`, value: false, }, { img: `${BackLink}src/iconTonCoin.svg`, value: false, }, { img: `${BackLink}src/iconEfirCoin.svg`, value: false, }, { img: `${BackLink}src/iconDHCoin.png`, value: false, }, { img: `${BackLink}src/iconBCoin.png`, value: false, },], infoNumbers: [], tag: ['', ''], textInfo: [], linkInfo: "#", compInfo: [{ title: "", text: "" }, { title: "", text: "" }], })
+	const { params } = useParams()
+	const [itemInfo, setItemInfo] = useState({ title: "", subTitle: "", sell: "", rent: "", squareImg: [], mainIMG: [], filterTag: ["All"], cost: [{ img: `${BackLink}src/iconBitCoin.svg`, value: false, }, { img: `${BackLink}src/iconTonCoin.svg`, value: false, }, { img: `${BackLink}src/iconEfirCoin.svg`, value: false, }, { img: `${BackLink}src/iconDHCoin.png`, value: false, }, { img: `${BackLink}src/iconBCoin.png`, value: false, },], infoNumbers: [], tag: ['', ''], textInfo: [], linkInfo: "#", compInfo: [{ title: "", text: "" }, { title: "", text: "" }], })
+	console.log(params)
+	useEffect((BackLink, params) => {
 
-	const getData = async () => {
-		await axios.get(BackLink + params.id)
-			.then((res => {
-				setItemInfo(res.data)
-			}))
-	}
+		const getData = async () => {
+			await axios.get(BackLink + params.id)
+				.then((res => {
+					setItemInfo(res.data)
+				}))
+		}
 
-	useEffect(() => {
 		getData()
 	}, [])
 

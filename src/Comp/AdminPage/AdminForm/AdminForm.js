@@ -48,7 +48,6 @@ const AdminForm = ({ BackLink }) => {
 
   const [squareImg, setSquareImg] = useState([])
   const [mainIMG, setMainIMG] = useState()
-  const [iconMapIMG, setIconMapIMG] = useState()
   const [filterTag, setFilterTag] = useState(["All"])
   const [textInfo, setTextInfo] = useState("")
   const [type, setType] = useState([
@@ -61,7 +60,7 @@ const AdminForm = ({ BackLink }) => {
       value: false
     },
   ])
-  const [cost, setCost] = useState([
+  const cost = [
     {
       img: `iconBitCoin.svg`,
       value: false,
@@ -82,12 +81,12 @@ const AdminForm = ({ BackLink }) => {
       img: `iconBCoin.png`,
       value: false,
     },
-  ])
-  const [tag, setTag] = useState([
+  ]
+  const tag = [
     '',
     ''
-  ])
-  const [compInfo, setCompInfo] = useState([
+  ]
+  const compInfo = [
     {
       title: "",
       text: ""
@@ -96,10 +95,10 @@ const AdminForm = ({ BackLink }) => {
       title: "",
       text: ""
     }
-  ])
+  ]
 
   const postObj = () => {
-    axios.post(BackLink, { title, subTitle, type, sell, rent, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, iconMapIMG, tag, textInfo })
+    axios.post(BackLink, { title, subTitle, type, sell, rent, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, tag, textInfo })
       .then(function (response) {
         console.log(response)
       })

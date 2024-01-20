@@ -24,15 +24,18 @@ export const SecondHeaderRow = ({BackLink}) => {
 		},
 	]
 
-	const getData = async () => {
-		await axios.get(BackLink + "coins")
-			.then((res => {
-				setArrCostValue(res.data)
-				setCostMainValue(res.data[0])
-			}))
-	}
+	useEffect((BackLink) => {
 
-	useEffect(() => getData(), [])
+		const getData = async () => {
+			await axios.get(BackLink + "coins")
+				.then((res => {
+					setArrCostValue(res.data)
+					setCostMainValue(res.data[0])
+				}))
+		}
+
+		getData()
+	}, [])
 
 	const [lanMainValue, setLanMainValue] = useState(arrLanValue[0])
 

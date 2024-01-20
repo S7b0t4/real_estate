@@ -7,18 +7,17 @@ const MiddleCenterMap = ({BackLink}) => {
 
 	const [arrInfo, setArrInfo] = useState([])
 
-	const getData = async() => {
-		console.log(BackLink+"random")
-    await axios.get(BackLink+"random")
-    .then((res=>{
-			console.log(res.data)
-      setArrInfo(res.data)
-    }))
-  }
-
-  useEffect(()=>{
+  useEffect((BackLink)=>{
+		const getData = async() => {
+			console.log(BackLink+"random")
+			await axios.get(BackLink+"random")
+			.then((res=>{
+				console.log(res.data)
+				setArrInfo(res.data)
+			}))
+		}
+		
     getData()
-    console.log(arrInfo)
   }, [])
 	
 	const mapArrWithProductBlocks = arrInfo.map((obj, index)=>(

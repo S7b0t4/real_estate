@@ -21,15 +21,17 @@ export const HeaderTopRow = ({ BackLink }) => {
 		},
 	]
 
-	const getData = async () => {
-		await axios.get(BackLink + "coins")
-			.then((res => {
-				setArrCostValue(res.data)
-				setCostMainValue(res.data[0])
-			}))
-	}
+	useEffect((BackLink) => {
+		const getData = async () => {
+			await axios.get(BackLink + "coins")
+				.then((res => {
+					setArrCostValue(res.data)
+					setCostMainValue(res.data[0])
+				}))
+		}
 
-	useEffect(() => getData(), [])
+		getData() 
+	}, [])
 
 	const [lanMainValue, setLanMainValue] = useState(arrLanValue[0])
 
