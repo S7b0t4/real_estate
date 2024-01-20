@@ -1,34 +1,34 @@
 import "./SecondFooterProductBlock.css"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 
-const SecondFooterProductBlock = ({BackLink, prop, index}) => {
+const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 
-	const valueCostIcon = (bool) =>{
-		if(bool){
+	const valueCostIcon = (bool) => {
+		if (bool) {
 			return "costIconVisibility"
 		}
 		return "costIconUnVisibility"
 	}
-	
-	const mapCostArr = prop.cost.map((obj)=>(
-		<div>
+
+	const mapCostArr = prop.cost.map((obj, index) => (
+		<div key={index}>
 			<img src={BackLink + "uploads/" + obj.img} alt="" className={valueCostIcon(obj.value)} />
 		</div>
 	))
 
-	const mapTagArr = prop.tag.map((item)=>(
-		<div className="ghostTeg">
+	const mapTagArr = prop.tag.map((item, index) => (
+		<div className="ghostTeg" key={index}>
 			{item}
 		</div>
 	))
 
-	const visibilityTag = (index) =>{
-		if(index === 0){
-			return(
+	const visibilityTag = (index) => {
+		if (index === 0) {
+			return (
 				<div className='ghostTegBunch'>
 					{mapTagArr}
 				</div>
@@ -36,28 +36,28 @@ const SecondFooterProductBlock = ({BackLink, prop, index}) => {
 		}
 	}
 
-	const mapImgArr = prop.squareImg.map((item , index) => (
-		<SwiperSlide key={index}> 
+	const mapImgArr = prop.squareImg.map((item, index) => (
+		<SwiperSlide key={index}>
 			{visibilityTag(index)}
-			<img src={item} alt="" className='second_footer_product_block_img'/>
+			<img src={BackLink + "uploads/" + item} alt="" className='second_footer_product_block_img' />
 		</SwiperSlide>
 	))
-	
-	
-	return ( 
+
+
+	return (
 		<div className='second_footer_product_block' key={index}>
 			<Swiper
-			modules={[Pagination]}
-			pagination={{ clickable: false }}
-      spaceBetween={10}
-      slidesPerView={1}
-			className='second_footer_product_block_img_swiper'
-    	>
-      	{mapImgArr}
-    	</Swiper>
+				modules={[Pagination]}
+				pagination={{ clickable: false }}
+				spaceBetween={10}
+				slidesPerView={1}
+				className='second_footer_product_block_img_swiper'
+			>
+				{mapImgArr}
+			</Swiper>
 			<div className="second_footer_product_block_info">
 				<div className="second_footer_product_block_info_title_block">
-					<a className="second_footer_product_block_info_title" href={"/"+prop._id}>
+					<a className="second_footer_product_block_info_title" href={"/" + prop._id}>
 						{prop.title}
 					</a>
 					<div className="second_footer_product_block_info_subtitle">
@@ -75,7 +75,7 @@ const SecondFooterProductBlock = ({BackLink, prop, index}) => {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
- 
-export default SecondFooterProductBlock;
+
+export default SecondFooterProductBlock

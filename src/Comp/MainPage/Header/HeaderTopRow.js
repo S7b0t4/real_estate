@@ -21,17 +21,20 @@ export const HeaderTopRow = ({ BackLink }) => {
 		},
 	]
 
-	useEffect((BackLink) => {
+	useEffect(() => {
 		const getData = async () => {
-			await axios.get(BackLink + "coins")
-				.then((res => {
-					setArrCostValue(res.data)
-					setCostMainValue(res.data[0])
-				}))
-		}
-
-		getData() 
-	}, [])
+			try {
+				const response = await axios.get(BackLink + "coins");
+				setArrCostValue(response.data);
+				setCostMainValue(response.data[0]);
+			} catch (error) {
+				console.error('Ошибка при отправке запроса:', error);
+			}
+		};
+	
+		getData();
+	}, [BackLink]);
+	
 
 	const [lanMainValue, setLanMainValue] = useState(arrLanValue[0])
 

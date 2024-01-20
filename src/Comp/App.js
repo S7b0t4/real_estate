@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SecondPage from './SecondaryPage/SecondPage'
 import AdminPage from './AdminPage/AdminPage'
 
-
 import axios from 'axios'
 
 const BackLink = "http://localhost:5000/"

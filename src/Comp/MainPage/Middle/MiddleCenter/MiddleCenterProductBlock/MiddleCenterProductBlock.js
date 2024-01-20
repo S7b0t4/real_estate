@@ -38,7 +38,7 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 	const mapImgArr = prop.squareImg.map((item, index) => (
 		<SwiperSlide key={index}>
 			{visibilityTag(index)}
-			<img src={item} alt="" className='middle_center_product_block_img' />
+			<img src={BackLink + "uploads/" + item} alt="" className='middle_center_product_block_img' />
 		</SwiperSlide>
 	))
 
@@ -78,8 +78,14 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 				</div>
 				<div className="middle_center_product_block_info_sell_row">
 					<div className="middle_center_product_block_info_sell_block">
-						<div className="middle_center_product_block_info_sell">Sale: {sellType(0)}</div>
-						<div className="middle_center_product_block_info_sell">Rent: {sellType(1)}</div>
+						<div className="middle_center_product_block_info_sell">
+							<div className='cost_num'>Sale:</div>
+							<div className='cost_num'>{sellType(0)}</div>
+						</div>
+						<div className="middle_center_product_block_info_sell">
+							<div className='cost_num'>Rent:</div>
+							<div className='cost_num'>{sellType(1)}</div>
+						</div>
 					</div>
 					<div className="middle_center_product_block_info_cost_row">
 						{mapCostArr}

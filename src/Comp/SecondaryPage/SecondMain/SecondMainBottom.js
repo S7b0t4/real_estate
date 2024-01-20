@@ -9,8 +9,8 @@ const SecondMainBottom = ({BackLink, itemInfo}) => {
 		return "costIconUnVisibility"
 	}
 
-	const mapCostArr = itemInfo.cost.map((obj)=>(
-		<div>
+	const mapCostArr = itemInfo.cost.map((obj, index)=>(
+		<div key={index}>
 			<img src={BackLink+"uploads/"+obj.img} alt="" className={valueCostIcon(obj.value)} />
 		</div>
 	))

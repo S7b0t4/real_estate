@@ -51,8 +51,8 @@ const mapMinimumObjectList = (
 			pagination={{ clickable: true }}
     >
 			{
-				objectList.map((item)=>( 
-					<SwiperSlide>
+				objectList.map((item, index)=>( 
+					<SwiperSlide key={index}>
       			<div className='header_mid_row_colum_big'>
 							<div className="header_mid_row_colum_title_big">
 								{item.objectTitle}

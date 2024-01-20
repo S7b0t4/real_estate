@@ -51,7 +51,7 @@ const FilterBlock = ({ setTestArrForMapProductBlocks, BackLink, ChangeViewParam 
           <div className='filter_block_row_title'>
             FILTER
           </div>
-          <button className='filter_block_row_button' onClick={ChangeViewParam} alt="cross" d>
+          <button className='filter_block_row_button' onClick={ChangeViewParam} alt="cross">
             <CrossSVG />
           </button>
         </div>

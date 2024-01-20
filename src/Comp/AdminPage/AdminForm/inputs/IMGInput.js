@@ -19,7 +19,7 @@ const IMGInput = ({BackLink, inputDescription, changeEvent, inputMultiple}) => {
 
 	const saveImg = (event) =>{
 		setImgList(Object.values(event.target.files).map(i=>i.name));
-		changeEvent(Object.values(event.target.files).map(i=>BackLink + "uploads/" + i.name))
+		changeEvent(Object.values(event.target.files).map(i=>i.name))
 		postPhoto(Object.values(event.target.files))
 	}
 
