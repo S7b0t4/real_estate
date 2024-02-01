@@ -10,6 +10,7 @@ import FilterInput from "./inputs/FilterInput"
 import MoneyTypeInput from "./inputs/MoneyTypeInput"
 import NumberInput from './inputs/NumberInput'
 
+import LocationInput from './inputs/LocationInput'
 import Map from "./Components/Map"
 
 const AdminForm = ({ BackLink }) => {
@@ -18,6 +19,9 @@ const AdminForm = ({ BackLink }) => {
   const [subTitle, setSubTitle] = useState("")
   const [sell, setSell] = useState("")
   const [rent, setRent] = useState("")
+
+  const [country, setCountry] = useState("")
+  const [city, setCity] = useState("")
 
   const [infoNumbers, setInfoNumbers] = useState([
     {
@@ -98,7 +102,7 @@ const AdminForm = ({ BackLink }) => {
   ]
 
   const postObj = () => {
-    axios.post(BackLink, { title, subTitle, type, sell, rent, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, tag, textInfo })
+    axios.post(BackLink, { title, subTitle, type, sell, rent, country, city, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, tag, textInfo })
       .then(function (response) {
         console.log(response)
       })
@@ -167,7 +171,9 @@ const AdminForm = ({ BackLink }) => {
       <div> --- </div>
       <IMGInput BackLink={BackLink} inputDescription={"Select main IMG"} inputMultiple changeEvent={(event) => setMainIMG(event)} />
       <IMGInput BackLink={BackLink} inputDescription={"Select square IMG"} inputMultiple changeEvent={(event) => setSquareImg(event)} />
-      <Map/>
+      <LocationInput inputDescription={"Select country"} list={["Thailand", "UAE"]} setValue={(i) => setCountry(i)}/>
+      <LocationInput inputDescription={"Select city"} list={["Bangkok", "Dubai", "Pattaya", "Samui"]} setValue={(i) => setCity(i)}/>
+      <Map city={city} country={country}/>
       <div> --- </div>
       <MoneyTypeInput BackLink={BackLink} inputDescription={"Cost money"} cost={cost} />
       <div> --- </div>

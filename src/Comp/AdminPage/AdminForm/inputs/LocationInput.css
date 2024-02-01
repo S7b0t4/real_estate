@@ -1,0 +1,18 @@
+.main_block{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.select_value{
+  padding: 5px;
+  border: 1px solid black;
+}
+.list_value{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.element_value{
+  padding: 5px;
+  border: 1px solid black;
+}
