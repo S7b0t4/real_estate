@@ -1,6 +1,9 @@
 import iconPosition from "../../imgSource/iconPosition.svg"
-import iconShare from "../../imgSource/iconShare.svg"
 import iconArrayRight from "../../imgSource/iconArrayRight.svg"
+
+import CopyLink from "./Components/CopyLink.js"
+import RequestInfo from "./Components/RequestInfo.js";
+import 'animate.css';
 
 const SecondMainTop = ({BackLink, itemInfo}) => {
 
@@ -34,8 +37,8 @@ const SecondMainTop = ({BackLink, itemInfo}) => {
 						</div>
 					</div>
 					<div className="second_main_top_big_row_colum">
-						<div className="second_main_top_big_row_colum_sale">Sale: {itemInfo.sell}</div>
-						<div className="second_main_top_big_row_colum_rent">Rent: {itemInfo.rent}</div>
+						{itemInfo.sell && <div className="second_main_top_big_row_colum_sale">Sale: {itemInfo.sell}</div>}
+						{itemInfo.rent && <div className="second_main_top_big_row_colum_rent">Rent: {itemInfo.rent}</div>}
 					</div>
 					<div className="second_main_top_big_row_row">
 						{
@@ -43,13 +46,8 @@ const SecondMainTop = ({BackLink, itemInfo}) => {
 						}
 					</div>
 					<div className="second_main_top_big_row_button_row">
-						<div className='second_main_top_big_row_share_row'>
-							<img src={iconShare} alt="" />
-							<div className='second_main_top_big_row_share_row_link' href='#'>Share</div>
-						</div>
-						<div className='second_main_top_big_row_button_row_button'>
-							Request Info
-						</div>
+							<CopyLink/>
+							<RequestInfo BackLink={BackLink} itemInfo={itemInfo}/>
 					</div>
 				</div>
 			</div>

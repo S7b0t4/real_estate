@@ -1,4 +1,7 @@
-const About = ({ itemInfo }) => {
+import Map from "./Components/Map"
+import "./About.css"
+
+const About = ({ BackLink, itemInfo }) => {
 	const mapInfoNumber = itemInfo.infoNumbers.map((item, index) => (
 		<div className='info_number_item' key={index}>
 			<div className="info_number_item_number">{item.value}</div>
@@ -24,7 +27,9 @@ const About = ({ itemInfo }) => {
 					<div className='about_text_text' >{mapTextInfo}</div>
 					<div className='about_text_link' href={itemInfo.linkInfo}>Download presentation (PDF)</div>
 				</div>
-				<img className='about_text_img' src={itemInfo.iconMapIMG} alt="" />
+				<div className="about_text_map">
+					<Map BackLink={BackLink} city={itemInfo.city} country={itemInfo.country}/>
+				</div>
 			</div>
 		</div>
 	)

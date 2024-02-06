@@ -54,6 +54,11 @@ const AdminForm = ({ BackLink }) => {
   const [mainIMG, setMainIMG] = useState()
   const [filterTag, setFilterTag] = useState(["All"])
   const [textInfo, setTextInfo] = useState("")
+
+  //Contact info
+  const [number, setNumber] = useState()
+  const [mail, setMail] = useState("")
+
   const [type, setType] = useState([
     {
       name: "sell",
@@ -64,7 +69,7 @@ const AdminForm = ({ BackLink }) => {
       value: false
     },
   ])
-  const cost = [
+  const [cost, setCost] = useState([
     {
       img: `iconBitCoin.svg`,
       value: false,
@@ -85,7 +90,7 @@ const AdminForm = ({ BackLink }) => {
       img: `iconBCoin.png`,
       value: false,
     },
-  ]
+  ])
   const tag = [
     '',
     ''
@@ -102,7 +107,7 @@ const AdminForm = ({ BackLink }) => {
   ]
 
   const postObj = () => {
-    axios.post(BackLink, { title, subTitle, type, sell, rent, country, city, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, tag, textInfo })
+    axios.post(BackLink, { title, subTitle, type, sell, number, mail, rent, country, city, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, tag, textInfo })
       .then(function (response) {
         console.log(response)
       })
@@ -136,34 +141,48 @@ const AdminForm = ({ BackLink }) => {
     )
   }
 
-  const handleChange = (value, index) => {
-    setInfoNumbers(prevState => 
-      prevState.map((item, ind) => 
-        ind === index 
+  const handleChangeInfoNumber = (value, index) => {
+    setInfoNumbers(prevState =>
+      prevState.map((item, ind) =>
+        ind === index
           ? { ...item, "value": value }
           : item
       ),
     );
   }
-  
+
+  const handleChangeMoneyType = (index) => {
+    setCost(prevState =>
+      prevState.map((item, ind) =>
+        ind === index
+          ? { ...item, "value": !item.value }
+          : item
+      ),
+    );
+  }
+
   useEffect(() => {
     console.log(infoNumbers);
   }, [infoNumbers]);
-  
-  
+
+
   const mapInfoNumbers = infoNumbers.map((i, index) => (
-    <NumberInput inputDescription={i.title} key={index} setInputValue={(value) => handleChange(value, index)} />
+    <NumberInput inputDescription={i.title} key={index} setInputValue={(value) => handleChangeInfoNumber(value, index)} />
   ))
 
   return (
     <div className='admin_form_colum'>
       <FilterInput inputDescription={"Select type of realEstate"} handleButtonClick={(value) => filterTagHandleButtonClick(value)} filterTag={filterTag} />
       <div> --- </div>
-      <TextInput className="admin_form_title" inputDescription={"Title"} setInputValue={(value) => setTitle(value)} />
-      <TextInput className="admin_form_subtitle" inputDescription={"Address"} setInputValue={(value) => setSubTitle(value)} />
+      <TextInput className="admin_form_title" inputDescription={"Title"} setInputValue={(value) => setTitle(value)} type={"text"}/>
+      <TextInput className="admin_form_subtitle" inputDescription={"Address"} setInputValue={(value) => setSubTitle(value)} type={"text"}/>
+      <div> --- </div>
+      <h3>Contact info</h3>
+      <TextInput inputDescription={"number"} setInputValue={(value) => setNumber(value)} type={"tel"}/>
+      <TextInput inputDescription={"mail"} setInputValue={(value) => setMail(value)} type={"email"}/>
       <div> --- </div>
       <TypeInput type={type} inputDescription={"Sell type"} updateBooleanValue={(value) => { typeUpdateBooleanValue(value) }} />
-      {(type[1].value && type[1].value) && <div> --- </div> }
+      {(type[1].value && type[1].value) && <div> --- </div>}
       {type[0].value && <NumberInput inputDescription={`How many cost for sell`} setInputValue={(value) => setSell(value)} />}
       {type[1].value && <NumberInput inputDescription={`How many cost for rent`} setInputValue={(value) => setRent(value)} />}
       <div> --- </div>
@@ -171,13 +190,13 @@ const AdminForm = ({ BackLink }) => {
       <div> --- </div>
       <IMGInput BackLink={BackLink} inputDescription={"Select main IMG"} inputMultiple changeEvent={(event) => setMainIMG(event)} />
       <IMGInput BackLink={BackLink} inputDescription={"Select square IMG"} inputMultiple changeEvent={(event) => setSquareImg(event)} />
-      <LocationInput inputDescription={"Select country"} list={["Thailand", "UAE"]} setValue={(i) => setCountry(i)}/>
-      <LocationInput inputDescription={"Select city"} list={["Bangkok", "Dubai", "Pattaya", "Samui"]} setValue={(i) => setCity(i)}/>
-      <Map city={city} country={country}/>
+      <LocationInput inputDescription={"Select country"} list={["Thailand", "UAE"]} setValue={(i) => setCountry(i)} />
+      <LocationInput inputDescription={"Select city"} list={["Bangkok", "Dubai", "Pattaya", "Samui"]} setValue={(i) => setCity(i)} />
+      <Map city={city} country={country} />
       <div> --- </div>
-      <MoneyTypeInput BackLink={BackLink} inputDescription={"Cost money"} cost={cost} />
+      <MoneyTypeInput BackLink={BackLink} inputDescription={"Cost money"} cost={cost} handleChangeMoneyType={(index) => handleChangeMoneyType(index)} />
       <div> --- </div>
-      <TextAreaInput inputDescription={"Description"} setInputValue={(value) => setTextInfo(value)} />
+      <TextAreaInput inputDescription={"Description"} setInputValue={(value) => setTextInfo(value) || console.log(textInfo)} />
       <div>
         <button className='mainButton' onClick={saveForm}>Save</button>
       </div>

@@ -11,7 +11,7 @@ const SecondFooter = ({itemInfo, BackLink}) => {
 	return ( 
 		<div className='second_footer_wrapper'>
 			<SecondFooterTop onChangeMainValue={(item)=>setMainValue(item)}/>
-			<SecondFooterCenter mainValue={mainValue} itemInfo={itemInfo}/>
+			<SecondFooterCenter BackLink={BackLink} mainValue={mainValue} itemInfo={itemInfo}/>
 			<SecondFooterAdoptive itemInfo={itemInfo}/>
 			<SecondFooterBottom BackLink={BackLink}/>
 		</div>

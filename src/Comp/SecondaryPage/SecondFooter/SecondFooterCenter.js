@@ -1,10 +1,10 @@
 import About from "../SecondComp/About"
 import CompItem from "../SecondComp/CompItem"
-const SecondFooterCenter = ({mainValue, itemInfo}) => {
+const SecondFooterCenter = ({BackLink, mainValue, itemInfo}) => {
 
 	if(mainValue === "about"){	
 		return ( 
-			<About itemInfo={itemInfo}/>
+			<About BackLink={BackLink} itemInfo={itemInfo}/>
 		);
 	}
 	if(mainValue === "investment"){

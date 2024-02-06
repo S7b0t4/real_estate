@@ -1,9 +1,9 @@
-const MoneyTypeInput = ({ BackLink, inputDescription, cost }) => {
+const MoneyTypeInput = ({ BackLink, inputDescription, cost, handleChangeMoneyType }) => {
 
 	const mapCost = cost.map((i, index) => (
 		<div className='colum' key={index}>
 			<img src={BackLink+"uploads/"+i.img} alt="img"/>
-			<input type="checkbox" onClick={() => i.value = !i.value}/>
+			<input type="checkbox" onClick={() => handleChangeMoneyType(index)}/>
 		</div>
 	))
 

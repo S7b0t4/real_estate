@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 
-const TextInput = ({inputDescription, setInputValue}) => {
+const TextInput = ({inputDescription, setInputValue, type}) => {
 	const textInputRef = useRef()
 	return ( 
-		<input className='input' placeholder={inputDescription} ref={textInputRef} type="text" onChange={()=>setInputValue(textInputRef.current.value)}/>
+		<input className='input' placeholder={inputDescription} ref={textInputRef} type="type" onChange={()=>setInputValue(textInputRef.current.value)}/>
 	);
 }
  

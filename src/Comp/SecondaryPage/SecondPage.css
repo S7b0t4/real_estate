@@ -1,3 +1,21 @@
+.button{
+	cursor: pointer;
+}
+.little_img{
+	max-width: 30px;
+}
+.copy{
+	background-color: rgb(87, 204, 87);
+	animation-duration: 2s;
+}
+.copyLink{
+	border-radius: 5px;
+	gap: 10px;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
 .second_main_top{
 	padding: 31px;
 	max-width: 80%;
@@ -7,8 +25,14 @@
 	gap: 32px;
 }
 .second_main_top_row{
+	align-items: center;
 	display: flex;
 	gap: 12px;
+}
+.second_main_top_row_row{
+	display: flex;
+	gap: 5px;
+	align-items: center;
 }
 .second_main_top_row_main_page{
 	color: var(--Black, #3A3A3A);
@@ -28,6 +52,10 @@
 .second_main_top_big_row_row{
 	display: flex;
 	gap: 6px;
+}
+.second_main_top_big_row_colum{
+	display: flex;
+	flex-direction: column;
 }
 .second_main_top_big_row_colum_title{
 	color: var(--Black, #3A3A3A);
