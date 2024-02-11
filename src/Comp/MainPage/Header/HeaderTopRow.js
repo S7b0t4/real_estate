@@ -4,22 +4,11 @@ import "./HeaderTopRow.css"
 
 import BoardBlockColum from './Boards/BoardBlockColum'
 
-export const HeaderTopRow = ({ BackLink }) => {
+export const HeaderTopRow = ({ BackLink, arrLanValue, setLanMainValue, lanMainValue }) => {
 
 	const [arrCostValue, setArrCostValue] = useState([])
 
 	const [costMainValue, setCostMainValue] = useState({})
-
-	const arrLanValue = [
-		{
-			valueText: "Eng",
-			valueIMG: "uploads/iconENG.svg",
-		},
-		{
-			valueText: "Ru",
-			valueIMG: "uploads/iconRus.svg",
-		},
-	]
 
 	useEffect(() => {
 		const getData = async () => {
@@ -34,9 +23,6 @@ export const HeaderTopRow = ({ BackLink }) => {
 	
 		getData();
 	}, [BackLink]);
-	
-
-	const [lanMainValue, setLanMainValue] = useState(arrLanValue[0])
 
 	const costArrValue = arrCostValue.filter((item) => {
 		return item.valueText !== costMainValue.valueText

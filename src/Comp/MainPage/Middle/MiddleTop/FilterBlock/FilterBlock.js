@@ -15,12 +15,12 @@ const FilterBlock = ({ setTestArrForMapProductBlocks, BackLink, ChangeViewParam 
   const [sortBy, setSortBy] = useState("All")
   const [country, setCountry] = useState()
   const [city, setCity] = useState()
-  const [priceRange, setPriceRange] = useState({"$gte": "","$lte": "",})
+  const [priceRange, setPriceRange] = useState({'$gte': '0', '$lte': '9999999999999999'})
   const [idontcare, setidontcare] = useState(false)
-  const [yearOfConstruction, setYearOfConstruction] = useState()
+  const [yearOfConstruction, setYearOfConstruction] = useState({'$gte': '0', '$lte': '9999999999999999'})
   const [readymove, setReadymove] = useState(false)
   const [beingbuild, setbeingbuild] = useState(false)
-  const [squares, setSquares] = useState()
+  const [squares, setSquares] = useState({'$gte': '0', '$lte': '9999999999999999'})
   const [bedRoomCount, setBedRoomCount] = useState()
 
   const getInfo = () => {
@@ -68,7 +68,7 @@ const FilterBlock = ({ setTestArrForMapProductBlocks, BackLink, ChangeViewParam 
           <SortElementCount title={"Bedrooms"} setBedRoomCount={(e) => setBedRoomCount(e)} />
         </div>
         <div className='filter_button_row'>
-          <button className='filter_button' onClick={getInfo}>Confirm</button>
+          <button className='filter_button' onClick={() => {getInfo(); ChangeViewParam()}}>Confirm</button>
         </div>
       </div>
     </div>
