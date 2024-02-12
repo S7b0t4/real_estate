@@ -1,5 +1,7 @@
 import iconPosition from "../../imgSource/iconPosition.svg"
-import iconShare from "../../imgSource/iconShare.svg"
+
+import CopyLink from "./Components/CopyLink"
+import RequestInfo from "./Components/RequestInfo"
 
 const SecondMainBottom = ({BackLink, itemInfo}) => {
 	const valueCostIcon = (bool) =>{
@@ -18,7 +20,7 @@ const SecondMainBottom = ({BackLink, itemInfo}) => {
 	return ( 
 		<div className='adoptive_second_main_bottom'>
 			<div className='second_main_bottom_title'>{itemInfo.title}</div>
-			<div className='second_main_bottom_subtitle'><img src={iconPosition} alt="" />{itemInfo.subTitle}</div>
+			<div className='second_main_bottom_subtitle'><img src={iconPosition} alt="" />{itemInfo.country}/{itemInfo.city}</div>
 			<div className='second_main_bottom_big_row'>
 				<div className="second_main_bottom_big_row_colum">
 					<div className="second_main_bottom_big_row_colum_sale">Sale: {itemInfo.sell}</div>
@@ -30,13 +32,8 @@ const SecondMainBottom = ({BackLink, itemInfo}) => {
 					}
 				</div>
 			</div>
-			<div className='second_main_bottom_big_row_button_row_button'>
-				Request Info
-			</div>
-			<div className='second_main_bottom_big_row_share_row'>
-				<img src={iconShare} alt="" />
-				<div className='second_main_bottom_big_row_share_row_link' href='#'>Share</div>
-			</div>
+			<RequestInfo itemInfo={itemInfo} BackLink={BackLink} adoptive={true}/>
+			<CopyLink/>
 		</div>
 	);
 }

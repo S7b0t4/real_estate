@@ -19,25 +19,8 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 		</div>
 	))
 
-	const mapTagArr = prop.tag.map((item, index) => (
-		<div className="ghostTeg" key={index}>
-			{item}
-		</div>
-	))
-
-	const visibilityTag = (index) => {
-		if (index === 0) {
-			return (
-				<div className='ghostTegBunch' key={index}>
-					{mapTagArr}
-				</div>
-			)
-		}
-	}
-
 	const mapImgArr = prop.squareImg.map((item, index) => (
 		<SwiperSlide key={index}>
-			{visibilityTag(index)}
 			<img src={BackLink + "uploads/" + item} alt="" className='middle_center_product_block_img' />
 		</SwiperSlide>
 	))
@@ -73,7 +56,7 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 						{prop.title}
 					</a>
 					<div className="middle_center_product_block_info_subtitle">
-						{prop.subTitle}
+						{prop.country}/{prop.city}
 					</div>
 				</div>
 				<div className="middle_center_product_block_info_sell_row">

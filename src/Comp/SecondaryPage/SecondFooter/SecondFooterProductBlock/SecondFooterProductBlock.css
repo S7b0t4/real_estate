@@ -2,7 +2,10 @@
 	width: 24%;
 }
 .second_footer_product_block_img{
-	width: 100%;
+	width: 372px;
+	height: 372px;
+	object-fit: cover;
+  object-position: center;
 }
 .second_footer_product_block_info{
 	display: flex;

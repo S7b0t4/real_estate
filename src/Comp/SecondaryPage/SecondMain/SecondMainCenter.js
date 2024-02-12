@@ -6,17 +6,11 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css'
 
-const SecondMainCenter = ({ BackLink, squareImg, mainIMG }) => {
-
-	const mapMainIMG = mainIMG.map((img, index) => (
-		<SwiperSlide key={index}>
-			<img className='imgSwapper' src={BackLink + "uploads/" + img} alt="" />
-		</SwiperSlide>
-	))
+const SecondMainCenter = ({ BackLink, squareImg }) => {
 
 	const mapSquareImg = squareImg.map((img, index) => (
 		<SwiperSlide key={index}>
-			<img className='mini_imgSwapper' src={BackLink + "uploads/" + img} alt="" />
+			<img className='imgSwapper' src={BackLink + "uploads/" + img} alt="" />
 		</SwiperSlide>
 	))
 
@@ -28,12 +22,6 @@ const SecondMainCenter = ({ BackLink, squareImg, mainIMG }) => {
 				pagination={{ clickable: true }}
 				spaceBetween={50}
 				slidesPerView={1}
-			>
-				{mapMainIMG}
-			</Swiper>
-			<Swiper
-				spaceBetween={10}
-				slidesPerView={5}
 			>
 				{mapSquareImg}
 			</Swiper>

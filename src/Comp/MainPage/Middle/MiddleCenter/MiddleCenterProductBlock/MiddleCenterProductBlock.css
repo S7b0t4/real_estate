@@ -2,9 +2,10 @@
 	width: 30%;
 }
 .middle_center_product_block_img{
-	max-width: 372px;
-	max-height: 372px;
-	width: 100%;
+	width: 372px;
+	height: 372px;
+	object-fit: cover;
+  object-position: center;
 }
 .middle_center_product_block_info{
 	display: flex;

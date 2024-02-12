@@ -20,25 +20,8 @@ const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 		</div>
 	))
 
-	const mapTagArr = prop.tag.map((item, index) => (
-		<div className="ghostTeg" key={index}>
-			{item}
-		</div>
-	))
-
-	const visibilityTag = (index) => {
-		if (index === 0) {
-			return (
-				<div className='ghostTegBunch'>
-					{mapTagArr}
-				</div>
-			)
-		}
-	}
-
 	const mapImgArr = prop.squareImg.map((item, index) => (
 		<SwiperSlide key={index}>
-			{visibilityTag(index)}
 			<img src={BackLink + "uploads/" + item} alt="" className='second_footer_product_block_img' />
 		</SwiperSlide>
 	))
@@ -61,7 +44,7 @@ const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 						{prop.title}
 					</a>
 					<div className="second_footer_product_block_info_subtitle">
-						{prop.subTitle}
+						{prop.country}/{prop.city}
 					</div>
 				</div>
 				<div className="second_footer_product_block_info_sell_row">

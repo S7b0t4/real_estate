@@ -2,3 +2,8 @@
   width: 100%;
   max-width: 45%;
 }
+@media screen and (max-width:1200px) {
+  .about_text_map{
+    max-width: 100%;
+  }
+}

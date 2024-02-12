@@ -33,7 +33,7 @@ const SecondMainTop = ({BackLink, itemInfo}) => {
 						<div className='second_main_top_big_row_colum_title'>{itemInfo.title}</div>
 						<div className='second_main_top_big_row_colum_subtitle'>
 							<img src={iconPosition} alt="" />
-							{itemInfo.subTitle}
+							{itemInfo.country}/{itemInfo.city}
 						</div>
 					</div>
 					<div className="second_main_top_big_row_colum">

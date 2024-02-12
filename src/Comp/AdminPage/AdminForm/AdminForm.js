@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import "./AdminForm.css"
 import axios from 'axios'
 
@@ -17,7 +17,6 @@ import Map from "./Components/Map"
 const AdminForm = ({ BackLink }) => {
 
   const [title, setTitle] = useState("")
-  const [subTitle, setSubTitle] = useState("")
   const [sell, setSell] = useState("")
   const [rent, setRent] = useState("")
 
@@ -67,7 +66,6 @@ const AdminForm = ({ BackLink }) => {
   ])
 
   const [squareImg, setSquareImg] = useState([])
-  const [mainIMG, setMainIMG] = useState()
   const [filterTag, setFilterTag] = useState(["All"])
   const [textInfo, setTextInfo] = useState("")
 
@@ -123,7 +121,7 @@ const AdminForm = ({ BackLink }) => {
   ]
 
   const postObj = () => {
-    axios.post(BackLink, { title, subTitle, type, sell, squares, yearOfConstruction, bedrooms, specialInfo, number, mail, rent, country, city, infoNumbers, squareImg, mainIMG, filterTag, compInfo, cost, tag, textInfo })
+    axios.post(BackLink, { title, type, sell, squares, yearOfConstruction, bedrooms, specialInfo, number, mail, rent, country, city, infoNumbers, squareImg, filterTag, compInfo, cost, tag, textInfo })
       .then(function (response) {
         console.log(response)
       })
@@ -186,10 +184,6 @@ const AdminForm = ({ BackLink }) => {
     );
   }
 
-  useEffect(() => {
-    console.log(infoNumbers);
-  }, [infoNumbers]);
-
 
   const mapInfoNumbers = infoNumbers.map((i, index) => (
     <NumberInput inputDescription={i.title} key={index} index={index} setInputValue={(value) => handleChangeInfoNumber(value, index)} setSquares={(v) => { setSquares(v) }} setYearOfConstruction={(v) => { setYearOfConstruction(v) }} setBedrooms={(v)=>{setBedrooms(v)}} />
@@ -200,7 +194,6 @@ return (
     <FilterInput inputDescription={"Select type of realEstate"} handleButtonClick={(value) => filterTagHandleButtonClick(value)} filterTag={filterTag} />
     <div> --- </div>
     <TextInput className="admin_form_title" inputDescription={"Title"} setInputValue={(value) => setTitle(value)} type={"text"} />
-    <TextInput className="admin_form_subtitle" inputDescription={"Address"} setInputValue={(value) => setSubTitle(value)} type={"text"} />
     <div> --- </div>
     <h3>Contact info</h3>
     <TextInput inputDescription={"number"} setInputValue={(value) => setNumber(value)} type={"tel"} />
@@ -214,7 +207,6 @@ return (
     {mapInfoNumbers}
     <SpecialInfo inputDescription={`SpecialInfo`} specialInfo={specialInfo} handleChangeSpecialInfo={(i)=>handleChangeSpecialInfo(i)}/>
     <div> --- </div>
-    <IMGInput BackLink={BackLink} inputDescription={"Select main IMG"} inputMultiple changeEvent={(event) => setMainIMG(event)} />
     <IMGInput BackLink={BackLink} inputDescription={"Select square IMG"} inputMultiple changeEvent={(event) => setSquareImg(event)} />
     <LocationInput inputDescription={"Select country"} list={["Thailand", "UAE"]} setValue={(i) => setCountry(i)} />
     <LocationInput inputDescription={"Select city"} list={["Bangkok", "Dubai", "Pattaya", "Samui"]} setValue={(i) => setCity(i)} />
