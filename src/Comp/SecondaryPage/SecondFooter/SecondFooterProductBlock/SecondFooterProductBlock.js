@@ -22,9 +22,25 @@ const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 
 	const mapImgArr = prop.squareImg.map((item, index) => (
 		<SwiperSlide key={index}>
-			<img src={BackLink + "uploads/" + item} alt="" className='second_footer_product_block_img' />
+			<div className="second_footer_product_block_wrapper">
+				<img src={BackLink + "uploads/" + item} alt="" className='second_footer_product_block_img' />
+			</div>
 		</SwiperSlide>
 	))
+
+	const sellType = (i) => {
+		if(prop.type[i].value){
+			if(i === 0){
+				return (<div>{prop.sell}</div>)
+			}
+			if(i === 1){
+				return (<div>{prop.rent}</div>)
+			}
+		}
+		else{
+			return (<div>n/a</div>)
+		}
+	}
 
 
 	return (
@@ -49,8 +65,22 @@ const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 				</div>
 				<div className="second_footer_product_block_info_sell_row">
 					<div className="second_footer_product_block_info_sell_block">
-						<div className="second_footer_product_block_info_sell">Sale: {prop.sell}</div>
-						<div className="second_footer_product_block_info_sell">Rent: {prop.rent}</div>
+						<div className="second_footer_product_block_info_sell">
+							<div>
+								Sale:
+							</div>
+							<div>
+								{sellType(0)}
+							</div>
+						</div>
+						<div className="second_footer_product_block_info_sell">
+							<div>
+							Rent:
+							</div>
+							<div>
+								{sellType(1)}
+							</div>
+						</div>
 					</div>
 					<div className="second_footer_product_block_info_cost_row">
 						{mapCostArr}

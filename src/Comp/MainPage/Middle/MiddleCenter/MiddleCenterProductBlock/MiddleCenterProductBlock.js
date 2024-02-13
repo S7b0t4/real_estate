@@ -21,7 +21,9 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 
 	const mapImgArr = prop.squareImg.map((item, index) => (
 		<SwiperSlide key={index}>
-			<img src={BackLink + "uploads/" + item} alt="" className='middle_center_product_block_img' />
+			<div className="middle_center_product_block_wrapper">
+				<img src={BackLink + "uploads/" + item} alt="" className='middle_center_product_block_img' />
+			</div>
 		</SwiperSlide>
 	))
 
