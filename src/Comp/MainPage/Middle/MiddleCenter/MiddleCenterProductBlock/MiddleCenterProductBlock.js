@@ -54,7 +54,7 @@ const MiddleCenterProductBlock = ({ BackLink, prop, index }) => {
 			</Swiper>
 			<div className="middle_center_product_block_info">
 				<div className="middle_center_product_block_info_title_block">
-					<a className="middle_center_product_block_info_title" href={"/" + prop._id}>
+					<a className="middle_center_product_block_info_title" href={"/real_estate/" + prop._id}>
 						{prop.title}
 					</a>
 					<div className="middle_center_product_block_info_subtitle">
