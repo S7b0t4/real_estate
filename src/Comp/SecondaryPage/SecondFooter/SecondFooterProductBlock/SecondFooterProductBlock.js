@@ -48,7 +48,7 @@ const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 			<Swiper
 				modules={[Pagination]}
 				pagination={{ clickable: false }}
-				spaceBetween={10}
+				spaceBetween={10} 
 				slidesPerView={1}
 				className='second_footer_product_block_img_swiper'
 			>
@@ -56,7 +56,7 @@ const SecondFooterProductBlock = ({ BackLink, prop, index }) => {
 			</Swiper>
 			<div className="second_footer_product_block_info">
 				<div className="second_footer_product_block_info_title_block">
-					<a className="second_footer_product_block_info_title" href={"/real_estate/" + prop._id}>
+					<a className="second_footer_product_block_info_title" href={prop._id}>
 						{prop.title}
 					</a>
 					<div className="second_footer_product_block_info_subtitle">
