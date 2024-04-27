@@ -6,7 +6,7 @@ import AdminPage from './AdminPage/AdminPage'
 
 import axios from 'axios'
 
-const BackLink = "http://localhost:5000/real-estate-backend"
+const BackLink = "http://localhost:5000/real-estate-backend/"
 
 const App = () => {
 
@@ -29,7 +29,7 @@ const App = () => {
       <Routes>
         <Route path="/admin" element={<AdminPage BackLink={BackLink}/>} />
         <Route  path="/" element={<Wrapper setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} getData={getData} BackLink={BackLink} testArrForMapProductBlocks={testArrForMapProductBlocks} />}/>
-        <Route path={"/:id"} element={<SecondPage BackLink={BackLink}/>} />
+        <Route path={"/real-estate/:id"} element={<SecondPage BackLink={BackLink}/>} />
       </Routes>
     </BrowserRouter>
   )
