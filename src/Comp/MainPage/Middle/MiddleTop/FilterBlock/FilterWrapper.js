@@ -8,7 +8,9 @@ const FilterWrapper = ({ setTestArrForMapProductBlocks, BackLink, viewParam, Cha
 	if (viewParam){
 		return (
 			<div className='filter_block_bg' onClick={ChangeViewParam}>
-				<FilterBlock setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} BackLink={BackLink} ChangeViewParam={ChangeViewParam}/>
+				<div className='filter_block_background'>
+					<FilterBlock setTestArrForMapProductBlocks={setTestArrForMapProductBlocks} BackLink={BackLink} ChangeViewParam={ChangeViewParam}/>
+				</div>
 			</div>
 		)
 	}

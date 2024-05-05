@@ -8,3 +8,6 @@
   overflow: hidden;
 	z-index: 1000;
 }
+.filter_block_background{
+  position: relative;
+}
